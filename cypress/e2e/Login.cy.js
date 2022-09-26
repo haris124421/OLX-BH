@@ -4,7 +4,7 @@ import { HomePage } from "../pages/HomePage";
 const loginPageObj = new LoginPage();
 const homePageobj = new HomePage();
 
-describe('Login', () => {
+describe('Login Functionality Tests', () => {
   beforeEach('navigate to login page',() => {
     loginPageObj.navigate();
   });
