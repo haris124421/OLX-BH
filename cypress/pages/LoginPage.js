@@ -16,13 +16,11 @@ export class LoginPage {
         cy.contains("Log in").click();
     }
 
-    
-
     invalidPasswordLogin(){
         cy.contains('Invalid credentials').should('be.visible');
     }
 
-    loginbox(){
+    loginPopup(){
         cy.get('._470ef52d._9bb11e5f').should('be.visible');
     }
 }
