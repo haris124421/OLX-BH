@@ -8,7 +8,7 @@ export class LoginPage {
     }
 
     login(userName, password,type,i){
-        cy.contains("Login").click();
+        //cy.contains("Login").click();
         cy.get('._5fd7b300.c6ce5164._31a14546._42207ab4').eq(i).click();
         cy.get(type).type(userName);
         cy.contains("Next").click();
@@ -16,12 +16,10 @@ export class LoginPage {
         cy.contains("Log in").click();
     }
 
-    validateLogin(){
-        cy.get('._0559c5ad').should('be.visible');
-    }
+    
 
     invalidPasswordLogin(){
-        cy.get('._8918c0a8').should('be.visible');
+        cy.contains('Invalid credentials').should('be.visible');
     }
 
     loginbox(){

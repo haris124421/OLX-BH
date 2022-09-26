@@ -1,18 +1,23 @@
 import {LoginPage} from "../pages/LoginPage"
-const loginObj = new LoginPage();
+import { HomePage } from "../pages/HomePage";
+
+const loginPageObj = new LoginPage();
+const homePageobj = new HomePage();
 
 describe('Login', () => {
   beforeEach('navigate to login page',() => {
-    loginObj.navigate();
+    loginPageObj.navigate();
   });
   it('should login with email', () => {
-    loginObj.login("muhammad.haris@empglabs.com","1234567a","#email",2);
-    loginObj.validateLogin();
+    homePageobj.clickOnLoginButton();
+    loginPageObj.login("muhammad.haris@empglabs.com","1234567a","#email",2);
+    homePageobj.verifyIfUserIsLoggedIn();
   })
   
   it('should not login with incorrect crederntials', () => {
-    loginObj.login("muhammad.haris@empglabs.com","1234567b","#email",2);
-    loginObj.invalidPasswordLogin();
+    homePageobj.clickOnLoginButton();
+    loginPageObj.login("muhammad.haris@empglabs.com","1234567b","#email",2);
+    loginPageObj.invalidPasswordLogin();
   });
 
 })
