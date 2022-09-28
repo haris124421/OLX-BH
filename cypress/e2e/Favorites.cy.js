@@ -5,6 +5,7 @@ const homePageObj = new HomePage();
 const loginPageObj = new LoginPage();
 
 describe('Favorites Cases', () => {
+    
     beforeEach('navigate to login page',() => {
         loginPageObj.navigate();
       });
