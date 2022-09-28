@@ -23,4 +23,8 @@ export class HomePage{
         cy.get('._39a8843c.cf485b3b').click()
     }
 
+    verifyIfUnMarkedAsFavorite(){
+        cy.get('[alt="favoriteIconUnselected"]').should('be.visible');
+    }
+
 }
