@@ -1,5 +1,6 @@
 import {LoginPage} from "../pages/LoginPage"
 import { HomePage } from "../pages/HomePage";
+import { cyan } from "colorette";
 
 const loginPageObj = new LoginPage();
 const homePageobj = new HomePage();

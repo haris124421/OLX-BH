@@ -20,4 +20,6 @@ describe('Favorites Cases', () => {
         homePageObj.clickOnFavoriteIcon();
         homePageObj.verifyIfMarkedAsFavorite();
     });
+
+    
 });

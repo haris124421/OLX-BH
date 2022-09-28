@@ -4,8 +4,15 @@ import { eq } from "lodash";
 export class LoginPage {
 
     navigate(){
-        cy.visit('https://olx.com.bh/en')
+        cy.visit('https://stage.olx-bh.run/en/', {
+            auth: {
+                username: 'sl',
+                password: 'getin1',          
+             },
+        })
+        //cy.visit('https://olx.com.bh/en')
     }
+
 
     login(userName, password,type,i){
         //cy.contains("Login").click();
