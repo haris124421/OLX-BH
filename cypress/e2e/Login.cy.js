@@ -6,9 +6,11 @@ const loginPageObj = new LoginPage();
 const homePageobj = new HomePage();
 
 describe('Login Functionality Tests', () => {
+  
   beforeEach('navigate to login page',() => {
     loginPageObj.navigate();
   });
+
   it('should login with email', () => {
     homePageobj.clickOnLoginButton();
     loginPageObj.login("muhammad.haris@empglabs.com","1234567a","#email",2);

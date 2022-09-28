@@ -19,4 +19,8 @@ export class HomePage{
         cy.get('[alt="favoriteIconSelected"]').should('be.visible');
     }
 
+    clickOnArabicSwitch(){
+        cy.get('._39a8843c.cf485b3b').click()
+    }
+
 }
