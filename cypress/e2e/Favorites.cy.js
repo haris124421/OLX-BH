@@ -1,6 +1,6 @@
 import { waitForDebugger } from "inspector";
 import {HomePage} from "../pages/HomePage"
-import { LoginPage } from "../pages/loginPage";
+import { LoginPage } from "../pages/LoginPage";
 
 const homePageObj = new HomePage();
 const loginPageObj = new LoginPage();
