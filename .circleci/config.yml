@@ -6,3 +6,12 @@ workflows:
     jobs:
       - cypress/run:
           store_artifacts: true
+  daily-run-worflow:
+    triggers:
+      - schedule:
+          corn: "40 4 * * 1-5"
+          filters:
+            branches:
+              only: master
+    jobs:
+      - cypress/run:
