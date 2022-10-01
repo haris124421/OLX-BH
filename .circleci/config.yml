@@ -6,7 +6,7 @@ workflows:
     jobs:
       - cypress/run:
           store_artifacts: true
-  daily-run-worflow:
+  nightly:
     triggers:
       - schedule:
           corn: "50 4 * * 1,2,3,4,5,6"
