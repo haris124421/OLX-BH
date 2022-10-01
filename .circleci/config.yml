@@ -9,7 +9,7 @@ workflows:
   daily-run-worflow:
     triggers:
       - schedule:
-          corn: 45 4 * * 1-5
+          corn: "50 4 * * 1,2,3,4,5,6"
           filters:
             branches:
               only: master
