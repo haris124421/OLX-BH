@@ -12,3 +12,4 @@ module.exports = defineConfig({
     specPattern: "./cypress/integration/e2e/*.js"
   },
 });
+// test
