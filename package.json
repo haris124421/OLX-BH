@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "dependencies": {
     "cypress": "^10.9.0",
     "is-element-visible": "^1.0.1"
@@ -8,4 +9,27 @@
     "@cypress/webpack-preprocessor": "^5.13.0",
     "cypress-cucumber-preprocessor": "^4.3.1"
   }
+=======
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cypress.config.js",
+  "dependencies": {
+    "cypress": "^10.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haris124421/OLX-BH.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haris124421/OLX-BH/issues"
+  },
+  "homepage": "https://github.com/haris124421/OLX-BH#readme"
+>>>>>>> 35ea04215d11f36359d5367604fef5ee5b701f0e
 }
