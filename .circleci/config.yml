@@ -6,14 +6,14 @@ workflows:
     jobs:
       - cypress/run:
           store_artifacts: true
-daily-run-workflow:
-   triggers:
-     - schedule:
-         # Every day, 0421Z.
-         cron: "45 15 * * *"
-         filters:
-           branches:
-             only:
-               - master
-   jobs:
-     - cypress/run
+  daily-run-workflow:
+    triggers:
+      - schedule:
+          # Every day, 0421Z.
+          cron: "30 17 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - cypress/run
