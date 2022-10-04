@@ -6,12 +6,13 @@ workflows:
     jobs:
       - cypress/run:
           store_artifacts: true
-  nightly:
+  schedule-workflow:
     triggers:
       - schedule:
-          corn: "10 15 * * 1,2,3,4,5,6"
+          corn: "15 15 * * 1,2,3,4,5,6"
           filters:
             branches:
               only: master
     jobs:
+      - build
       - cypress/run
