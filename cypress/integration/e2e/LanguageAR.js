@@ -16,4 +16,8 @@ describe('Verifing arabic language of olx-lb', ()=> {
     it('it should visit the url', ()=> {
         cy.visitDomain(utility.authUsername, utility.authPassword)
     })
+    it('shoud switch to arabic', () => {
+      cy.get('._39a8843c.cf485b3b').click()
+      
+    });
 })
