@@ -1,19 +1,17 @@
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1
-workflows:
-  build:
-    jobs:
-      - cypress/run:
-          store_artifacts: true
+# workflows:
+#   build:
+#     jobs:
+#       - cypress/run:
+#           store_artifacts: true
 scheduled-workflow:
   triggers:
     - schedule:
-        corn: "55 9 * * 1,2,3,4,5,6"
+        corn: "14 40 * * 1,2,3,4,5,6"
         filters:
           branches:
             only: master
-  build:
-    jobs:
-      - cypress/run:
-          store_artifacts: true
+  jobs:
+    - cypress/run
