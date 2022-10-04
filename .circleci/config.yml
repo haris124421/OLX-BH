@@ -9,9 +9,10 @@ workflows:
 schedule-workflow:
   triggers:
     - schedule:
-        corn: "17 15 * * 1,2,3,4,5,6"
+        corn: "30 15 * * 1,2,3,4,5,6"
         filters:
           branches:
             only: master
-  jobs:
+  build:
+    jobs:
     - cypress/run
