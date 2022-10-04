@@ -1,7 +1,7 @@
 {
-    "email": "muhammad.haris@empglabs.com",
-    "password": "1234567a",
+    "userEmail": "muhammad.haris@empglabs.com",
+    "userPassword": "1234567a",
     "invalidPassword": "1234567b",
-    "username": "sl",
-    "passwordAuth": "getin1"
+    "authUsername": "sl",
+    "authPassword": "getin1"
 }

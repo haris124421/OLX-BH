@@ -15,7 +15,7 @@ describe('Favorites Cases', () => {
     })
 
     beforeEach('Visit Domain', () => {
-        cy.visitDomain(utility.username, utility.passwordAuth)
+        cy.visitDomain(utility.authUsername, utility.authPassword)
     })
 
     it('shoudl open login page', () => {
@@ -31,8 +31,8 @@ describe('Favorites Cases', () => {
 
     });
 
-    it.only('should mark as favorite', () => {
-        cy.olxLogin(utility.email, utility.password)
+    it('should mark as favorite', () => {
+        cy.olxLogin(utility.userEmail, utility.userPassword)
         homePageObj.FavoriteIcon()
         .should('be.visible').then(($favIcons) => {
             return Cypress._.sampleSize($favIcons.toArray(), 1)

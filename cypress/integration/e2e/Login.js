@@ -28,28 +28,14 @@ describe('Login Functionality Tests', () => {
     })
 
   it("Verify domain link is working fine", () => {
-    cy.visitDomain(utility.username, utility.passwordAuth)
+    cy.visitDomain(utility.authUsername, utility.authPassword)
   })
 
   it('Verify login with email', () => {
-    // homePageobj.loginbtn().click()
-    // loginObj.loginWithEmail().click()
-    // loginObj.enterEmail().type(utility.email)
-    // loginObj.nextBtn().click()
-    // loginObj.enterPassword().type(utility.password)
-    // loginObj.clickLogin().click()
-
-    cy.olxLogin(utility.email, utility.password)
+    cy.olxLogin(utility.userEmail, utility.userPassword)
   })
   
   it('Verify login with incorrect crederntials', () => {
-    // homePageobj.loginbtn().click()
-    // loginObj.loginWithEmail().click()
-    // loginObj.enterEmail().type(utility.email)
-    // loginObj.nextBtn().click()
-    // loginObj.enterPassword().type(utility.invalidPassword)
-    // loginObj.clickLogin().click()
-
-    cy.olxLogin(utility.email, utility.invalidPassword)
+    cy.olxLogin(utility.userEmail, utility.invalidPassword)
   });
 })
