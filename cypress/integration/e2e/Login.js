@@ -38,8 +38,4 @@ describe('Login Functionality Tests', () => {
   it('Verify login with incorrect crederntials', () => {
     cy.olxLogin(utility.userEmail, utility.invalidPassword)
   });
-<<<<<<< HEAD
 })
-=======
-})
->>>>>>> 77a8e28fe33faf355b4944fe7ae365f464336afc
