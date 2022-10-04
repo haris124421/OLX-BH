@@ -10,7 +10,7 @@ workflows:
     triggers:
       - schedule:
           # Every day, 0421Z.
-          cron: "30 17 * * *"
+          cron: "35 12 * * *"
           filters:
             branches:
               only:
