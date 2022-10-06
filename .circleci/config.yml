@@ -6,3 +6,14 @@ workflows:
     jobs:
       - cypress/run:
           store_artifacts: true
+  daily-run-workflow:
+    triggers:
+      - schedule:
+          # Every day, at 5:35pm PK time.
+          cron: "35 12 * * *"
+          filters:
+            branches:
+              only:
+                - stage
+    jobs:
+      - cypress/run
