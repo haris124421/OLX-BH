@@ -13,9 +13,6 @@ Framework Architecture\
  ┃ ┃ ┣ 📜Favorites.js\
  ┃ ┃ ┣ 📜LanguageAR.js\
  ┃ ┃ ┗ 📜Login.js\
- ┣ 📂pages\
- ┃ ┣ 📜HomePage.js\
- ┃ ┗ 📜LoginPage.js\
  ┣ 📂screenshots\
  ┣ 📂support\
  ┃ ┣ 📂pageObjects\
