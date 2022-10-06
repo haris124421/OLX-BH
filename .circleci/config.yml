@@ -9,11 +9,11 @@ workflows:
   daily-run-workflow:
     triggers:
       - schedule:
-          # Every day, 0421Z.
+          # Every day, at 5:35pm PK time.
           cron: "35 12 * * *"
           filters:
             branches:
               only:
-                - master
+                - stage
     jobs:
       - cypress/run
