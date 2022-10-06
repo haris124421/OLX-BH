@@ -5,7 +5,7 @@ workflows:
   build:
     jobs:
       - cypress/run:
-          store_arti  facts: true
+          store_artifacts: true
   daily-run-workflow:
     triggers:
       - schedule:
