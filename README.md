@@ -29,4 +29,4 @@ Framework Architecture\
  ┣ 📜.gitignore\
  ┣ 📜cypress.config.js\
  ┣ 📜package-lock.json\
- ┣ 📜package.json\
+ ┣ 📜package.json
