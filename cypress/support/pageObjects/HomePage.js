@@ -30,6 +30,9 @@ class HomePage{
     logut() {
         return cy.get("div[aria-label$='Logout']")
     }
+    languageButton(){
+        return cy.get('._39a8843c.cf485b3b')
+    }
 }
 
 export default HomePage;

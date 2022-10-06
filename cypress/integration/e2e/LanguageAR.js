@@ -3,6 +3,9 @@
 import LoginObjects from "../../support/pageObjects/LoginObjects"
 import HomePage from "../../support/pageObjects/HomePage"
 
+const loginObj = new LoginObjects();
+const homePageobj = new HomePage();
+
 describe('Verifing arabic language of olx-lb', ()=> {
     
     let utility
@@ -13,11 +16,12 @@ describe('Verifing arabic language of olx-lb', ()=> {
       })
     })
 
-    it('it should visit the url', ()=> {
+    beforeEach('it should visit the url', ()=> {
         cy.visitDomain(utility.authUsername, utility.authPassword)
     })
     it('shoud switch to arabic', () => {
-      cy.get('._39a8843c.cf485b3b').click()
+      homePageobj.languageButton().click()
+      homePageobj.languageButton().invoke('attr', 'aria-label').should('include','English')
       
     });
 })
