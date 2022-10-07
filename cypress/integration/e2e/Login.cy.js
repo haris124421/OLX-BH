@@ -68,7 +68,7 @@ describe('Login Functionality Tests', () => {
 
   });
 
-  it.only('should redirect user to chat window upon login after chat click', () => {
+  it('should redirect user to chat window upon login after chat click', () => {
   
     homePageobj.listingClick().click()
     
