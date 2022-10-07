@@ -39,6 +39,9 @@ class HomePage{
     sellButton(){
         return cy.get('._0db6bd2f.b7016787')
     }
+    listingClick(){
+        return cy.get('._459428ad').eq(0)
+    }
 }
 
 export default HomePage;

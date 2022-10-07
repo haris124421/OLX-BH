@@ -3,10 +3,14 @@
 import LoginObjects from "../../support/pageObjects/LoginObjects"
 import HomePage from "../../support/pageObjects/HomePage"
 import CategoryPage from "../../support/pageObjects/CategoryPage"
+import DetailPage from "../../support/pageObjects/DetailPage";
+import ChatsPage from "../../support/pageObjects/ChatsPage";
 
 const loginObj = new LoginObjects();
 const homePageobj = new HomePage();
 const categoryPageObj = new CategoryPage();
+const detailPageObj = new DetailPage();
+const chatsPageObj = new ChatsPage();
 
 describe('Login Functionality Tests', () => {
     
@@ -58,8 +62,21 @@ describe('Login Functionality Tests', () => {
     .click()
 
     cy.olxLogin(utility.userEmail, utility.userPassword)
-     categoryPageObj.chooseCategorySection()
-     .should('have.text', 'Choose a category')
+     
+    categoryPageObj.chooseCategorySection()
+    .should('have.text', 'Choose a category')
+
+  });
+
+  it('should redirect user to chat window upon login after chat click', () => {
+  
+    homePageobj.listingClick().click()
+    
+    detailPageObj.chatButton().click()
+    
+    cy.olxLogin(utility.userEmail, utility.userPassword)
+    
+    chatsPageObj.chatInbox().should('be.visible')
 
   });
 
