@@ -52,7 +52,7 @@ describe('Login Functionality Tests', () => {
   
   });
 
-  it.only('should redirect user to categories page upon login after sell cick', () => {
+  it('should redirect user to categories page upon login after sell cick', () => {
     
     homePageobj.sellButton()
     .click()
