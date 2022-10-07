@@ -26,12 +26,14 @@ describe('Verifing arabic language of olx-lb', ()=> {
       }
         
     })
+
     it('shoud switch to arabic', () => {
-      homePageobj.languageButton().click()
+      
+      homePageobj.languageButton()
+      .click()
+      
       homePageobj.languageButton()
       .should('have.attr','aria-label')
-      .and('include','English')
-      //.invoke('attr', 'aria-label').should('include','English')
-      
+      .and('include','English')      
     });
 })

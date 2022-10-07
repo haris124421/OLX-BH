@@ -41,7 +41,7 @@ Cypress.Commands.add('olxLogin', ($email, $password) => {
   const loginObj = new LoginObjects();
   const homePageObj = new HomePage();
 
-  homePageObj.loginbtn().click()
+  homePageObj.loginButton().click()
   loginObj.loginWithEmail().click()
   loginObj.enterEmail().type($email)
   loginObj.nextBtn().click()

@@ -4,7 +4,7 @@ class HomePage{
         return cy.get('.fb1b3abd.bcd9fd70')
     }
 
-    loginbtn() {
+    loginButton() {
         return cy.get("._0db6bd2f._1b04dcc1")
     }
 
