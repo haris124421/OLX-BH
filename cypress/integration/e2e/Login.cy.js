@@ -32,7 +32,7 @@ describe('Login Functionality Tests', () => {
 
   it('should login with Email with valid credentials', () => {
     
-    homePageObj.loginButton().click()
+    homePageobj.loginButton().click()
 
     cy.olxLogin(utility.userEmail, utility.userPassword)
     
@@ -41,9 +41,9 @@ describe('Login Functionality Tests', () => {
   
   })
   
-  it('hould not login with Email with Invalid password', () => {
+  it('should not login with Email with Invalid password', () => {
     
-    homePageObj.loginButton().click()
+    homePageobj.loginButton().click()
 
     cy.olxLogin(utility.userEmail, utility.invalidPassword)
     
