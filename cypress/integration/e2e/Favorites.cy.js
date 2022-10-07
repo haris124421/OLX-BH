@@ -45,6 +45,8 @@ describe('Favorites Cases', () => {
 
     it('should mark as favorite', () => {
         
+        homePageObj.loginButton().click()
+        
         cy.olxLogin(utility.userEmail, utility.userPassword)
         
         homePageObj.FavoriteIcon()
@@ -65,5 +67,5 @@ describe('Favorites Cases', () => {
         .should('eq', 'favoriteIconSelected')
    
     });
-    
+
 });

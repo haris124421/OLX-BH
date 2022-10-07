@@ -36,6 +36,9 @@ class HomePage{
     profileIcon(){
         return cy.get('._0559c5ad._624c3ae3')
     }
+    sellButton(){
+        return cy.get('._0db6bd2f.b7016787')
+    }
 }
 
 export default HomePage;
