@@ -4,7 +4,7 @@ class HomePage{
         return cy.get('.fb1b3abd.bcd9fd70')
     }
 
-    loginbtn() {
+    loginButton() {
         return cy.get("._0db6bd2f._1b04dcc1")
     }
 
@@ -32,6 +32,12 @@ class HomePage{
     }
     languageButton(){
         return cy.get('._39a8843c.cf485b3b')
+    }
+    profileIcon(){
+        return cy.get('._0559c5ad._624c3ae3')
+    }
+    sellButton(){
+        return cy.get('._0db6bd2f.b7016787')
     }
 }
 

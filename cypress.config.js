@@ -2,6 +2,7 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   pageLoadTimeout: 15000,
+  defaultCommandTimeout:10000,
   env: {
     url: 'https://stage.olx-bh.run/en',
   },
@@ -12,4 +13,3 @@ module.exports = defineConfig({
     specPattern: "./cypress/integration/e2e/*.js"
   },
 });
-// test
