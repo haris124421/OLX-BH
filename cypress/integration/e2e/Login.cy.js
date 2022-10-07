@@ -58,8 +58,9 @@ describe('Login Functionality Tests', () => {
     .click()
 
     cy.olxLogin(utility.userEmail, utility.userPassword)
-     categoryPageObj.chooseCategorySection()
-     .should('have.text', 'Choose a category')
+     
+    categoryPageObj.chooseCategorySection()
+    .should('have.text', 'Choose a category')
 
   });
 
