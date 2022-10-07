@@ -8,6 +8,10 @@ const homePageobj = new HomePage();
 
 describe('Login Functionality Tests', () => {
     
+  beforeEach(() => {
+    cy.visitDomain(utility.authUsername, utility.authPassword)
+  });
+  
   let utility
     before('Load Utility data', function() {
       cy.fixture("utilityData.json").then((utilityData) => {
@@ -16,26 +20,30 @@ describe('Login Functionality Tests', () => {
       })
     })
 
-    afterEach("logout if login", () => {
-      cy.wait(5000)
-      homePageobj.topbar().then(($top) => {
-        if($top.find("._874da736").is(':visible')) {
-          homePageobj.profileWindowArrow().click()
-          homePageobj.logut().click()
-        }
-      })
+    // afterEach("logout if login", () => {
+    //   cy.wait(5000)
+    //   homePageobj.topbar().then(($top) => {
+    //     if($top.find("._874da736").is(':visible')) {
+    //       homePageobj.profileWindowArrow().click()
+    //       homePageobj.logut().click()
+    //     }
+    //   })
       
-    })
+    //})
 
-  it("Verify domain link is working fine", () => {
-    cy.visitDomain(utility.authUsername, utility.authPassword)
-  })
+  // it.skip("Verify domain link is working fine", () => {
+  //   cy.visitDomain(utility.authUsername, utility.authPassword)
+  // })
 
   it('Verify login with email', () => {
     cy.olxLogin(utility.userEmail, utility.userPassword)
+    homePageobj.profileIcon()
+    .should('be.visible')
   })
   
   it('Verify login with incorrect crederntials', () => {
     cy.olxLogin(utility.userEmail, utility.invalidPassword)
+    loginObj.invalidLoginError()
+    .should('have.text','Invalid credentials.')
   });
 })

@@ -23,6 +23,11 @@ class LoginObjects {
     clickLogin() {
         return cy.get(".a755fcd9 > button > span")
     }
+
+    invalidLoginError(){
+        return cy.get('.c45bea97 > ._8918c0a8')
+
+    }
 }
 
 export default LoginObjects

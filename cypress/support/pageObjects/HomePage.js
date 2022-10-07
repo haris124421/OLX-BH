@@ -33,6 +33,9 @@ class HomePage{
     languageButton(){
         return cy.get('._39a8843c.cf485b3b')
     }
+    profileIcon(){
+        return cy.get('._0559c5ad._624c3ae3')
+    }
 }
 
 export default HomePage;
