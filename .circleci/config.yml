@@ -5,7 +5,9 @@ workflows:
   build:
     jobs:
       - cypress/run:
+          name: 'e2e_OLX-BH_Sanity'
           store_artifacts: true
+          
   daily-run-workflow:
     triggers:
       - schedule:
@@ -17,3 +19,4 @@ workflows:
                 - stage
     jobs:
       - cypress/run
+          
