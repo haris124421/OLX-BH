@@ -17,3 +17,4 @@ workflows:
                 - stage
     jobs:
       - cypress/run
+          name: 'e2e_OLX-BH_Sanity'
