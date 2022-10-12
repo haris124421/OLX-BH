@@ -1,0 +1,23 @@
+version: 2.1
+orbs:
+  cypress: cypress-io/cypress@1
+workflows:
+  build:
+    jobs:
+      - cypress/run:
+          name: 'OLX-BH_Functional_Sanity'
+          store_artifacts: true
+          
+  daily-run-workflow:
+    triggers:
+      - schedule:
+          # Every day, at 5:35pm PK time.
+          cron: "35 12 * * *"
+          filters:
+            branches:
+              only:
+                - stage
+    jobs:
+      - cypress/run:
+          name: 'OLX-BH_Functional_Sanity'
+          
