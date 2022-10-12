@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 
 import LoginObjects from "../../support/pageObjects/LoginObjects"
-import HomePage from "../../support/pageObjects/HomePage"
+import HomePage from "../../support/pageObjects/HomePageObjects"
 
 const loginObj = new LoginObjects();
 const homePageobj = new HomePage();
