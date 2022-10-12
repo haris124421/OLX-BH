@@ -1,10 +1,10 @@
 /// <reference types="cypress"/>
 
 import LoginObjects from "../../support/pageObjects/LoginObjects"
-import HomePage from "../../support/pageObjects/HomePage"
+import HomePage from "../../support/pageObjects/HomePageObjects"
 import CategoryPage from "../../support/pageObjects/CategoryPage"
-import DetailPage from "../../support/pageObjects/DetailPage";
-import ChatsPage from "../../support/pageObjects/ChatsPage";
+import DetailPage from "../../support/pageObjects/DetailPage"
+import ChatsPage from "../../support/pageObjects/ChatsPage"
 
 const loginObj = new LoginObjects();
 const homePageobj = new HomePage();
