@@ -5,7 +5,9 @@ workflows:
   build:
     jobs:
       - cypress/run:
+          name: 'OLX-BH_Functional_Sanity'
           store_artifacts: true
+          
   daily-run-workflow:
     triggers:
       - schedule:
@@ -16,4 +18,6 @@ workflows:
               only:
                 - stage
     jobs:
-      - cypress/run
+      - cypress/run:
+          name: 'OLX-BH_Functional_Sanity'
+          

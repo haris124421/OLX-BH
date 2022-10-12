@@ -5,6 +5,9 @@ import HomePage from "../../support/pageObjects/HomePageObjects"
 
 const loginObj = new LoginObjects();
 const homePageobj = new HomePage();
+const categoryPageObj = new CategoryPage();
+const detailPageObj = new DetailPage();
+const chatsPageObj = new ChatsPage();
 
 describe('Login Functionality Tests', () => {
     
@@ -30,6 +33,8 @@ describe('Login Functionality Tests', () => {
 
   it('should login with Email with valid credentials', () => {
     
+    homePageobj.loginButton().click()
+
     cy.olxLogin(utility.userEmail, utility.userPassword)
     
     homePageobj.profileIcon()
@@ -37,13 +42,39 @@ describe('Login Functionality Tests', () => {
   
   })
   
-  it('hould not login with Email with Invalid password', () => {
+  it('should not login with Email with Invalid password', () => {
     
+    homePageobj.loginButton().click()
+
     cy.olxLogin(utility.userEmail, utility.invalidPassword)
     
     loginObj.invalidLoginError()
     .should('have.text','Invalid credentials.')
   
+  });
+
+  it('should redirect user to categories page upon login after sell cick', () => {
+    
+    homePageobj.sellButton()
+    .click()
+
+    cy.olxLogin(utility.userEmail, utility.userPassword)
+     
+    categoryPageObj.chooseCategorySection()
+    .should('have.text', 'Choose a category')
+
+  });
+
+  it('should redirect user to chat window upon login after chat click', () => {
+  
+    homePageobj.listingClick().click()
+    
+    detailPageObj.chatButton().click()
+    
+    cy.olxLogin(utility.userEmail, utility.userPassword)
+    
+    chatsPageObj.chatInbox().should('be.visible')
+
   });
 
 })
