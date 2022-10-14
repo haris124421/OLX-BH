@@ -47,3 +47,48 @@ Cypress.Commands.add('olxLogin', ($email, $password) => {
   loginObj.enterPassword().type($password)
   loginObj.clickLogin().click()
 })
+
+Cypress.Commands.add('getSessionKey', () => {
+
+  let accessToken
+  let idToken
+  let refreshToken
+return cy.request({
+    method: 'POST',
+    url: 'https://auth.stage.olx-bh.run/auth/realms/olx-bh/protocol/openid-connect/token', // baseUrl is prepend to URL
+    form: true, // indicates the body should be form urlencoded and sets Content-Type: application/x-www-form-urlencoded headers
+    body: {
+        grant_type: 'password',
+        client_id: 'frontend',
+        scope: 'openid',
+        type: 'email_password',
+        email: 'muhammad.haris@empglabs.com',
+        password: '1234567a',
+    },
+  })
+  .then( (response) =>{
+      expect(`Response.status = ${response.status}`).to.eq('Response.status = 200')
+      accessToken= response.body.access_token
+      idToken= response.body.refresh_token
+      refreshToken = response.body.id_token
+      cy.writeFile('cypress/fixtures/testdata.json', {
+        "accessToken": response.body.access_token,
+        "idToken": response.body.id_token,
+        "refreshToken" : response.body.refresh_token
+    })
+
+})
+})
+
+Cypress.Commands.add('apiLogin', ($accessToken, $idToken, $refreshToken) =>{
+  cy.request({
+    method: 'POST',
+    url: 'https://stage.olx-bh.run/api/keycloak/session',
+    body: {
+      "accessToken": $accessToken,
+      "idToken": $idToken,
+      "refreshToken": $refreshToken
+    }
+  })
+})
+

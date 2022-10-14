@@ -1,7 +1,7 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  pageLoadTimeout: 15000,
+  pageLoadTimeout: 25000,
   defaultCommandTimeout:10000,
   env: {
     url: 'https://stage.olx-bh.run/en',
