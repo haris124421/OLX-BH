@@ -25,7 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import LoginObjects from "../support/pageObjects/LoginObjects"
-import HomePage from "../support/pageObjects/HomePage"
+import HomePage from "../support/pageObjects/HomePageObjects"
 
 Cypress.Commands.add("visitDomain", (username, password) => {
     cy.visit(Cypress.env('url'), {

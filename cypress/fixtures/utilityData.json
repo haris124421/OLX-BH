@@ -3,5 +3,13 @@
     "userPassword": "1234567a",
     "invalidPassword": "1234567b",
     "authUsername": "sl",
-    "authPassword": "getin1"
+    "authPassword": "getin1",
+    "country" : "Bahrain",
+    "seeAllinBahrain": "See ads in all Bahrain",
+    "locationRegions" : [
+        "Capital Governorate",
+        "Northern Governorate",
+        "Muharraq Governorate",
+        "Southern Governorate"
+    ]
 }
