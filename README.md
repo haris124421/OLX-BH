@@ -10,14 +10,16 @@ and directories to make it understandable where to lookup of files, objects and 
  ┃ ┗ 📜utilityData.json\
  ┣ 📂integration\
  ┃ ┗ 📂e2e\
- ┃ ┃ ┣ 📜Favorites.js\
- ┃ ┃ ┣ 📜LanguageAR.js\
- ┃ ┃ ┗ 📜Login.js\
+ ┃ ┃ ┣ 📜Favorites.cy.js\
+ ┃ ┃ ┣ 📜LanguageAR.cy.js\
+ ┃ ┃ ┗ 📜Login.cy.js\
+ ┃ ┃ ┗ 📜*.cy.js\
  ┣ 📂screenshots\
  ┣ 📂support\
  ┃ ┣ 📂pageObjects\
  ┃ ┃ ┣ 📜HomePage.js\
  ┃ ┃ ┗ 📜LoginObjects.js\
+ ┃ ┃ ┗ 📜*.js\
  ┃ ┣ 📜commands.js\
  ┃ ┗ 📜e2e.js\
  ┗ 📂videos\
