@@ -48,7 +48,7 @@ Cypress.Commands.add('olxLogin', ($email, $password) => {
   loginObj.clickLogin().click()
 })
 
-Cypress.Commands.add('getSessionKey', () => {
+Cypress.Commands.add('loginWithApi', () => {
 
   let accessToken
   let idToken
@@ -72,7 +72,7 @@ cy.request({
       idToken= response.body.id_token
       refreshToken = response.body.refresh_token
 cy.apiLogin(accessToken,idToken, refreshToken)
-//cy.reload()
+cy.reload()
 })
 
 })

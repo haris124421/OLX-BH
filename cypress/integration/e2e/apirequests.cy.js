@@ -4,7 +4,6 @@ describe("Login with API", function(){
   it("should generate session key and login with kecloack request", function(){
         
         cy.visitDomain('sl','getin1')
-        cy.getSessionKey()
-        cy.reload()
+        cy.loginWithApi()
         })
 })  
