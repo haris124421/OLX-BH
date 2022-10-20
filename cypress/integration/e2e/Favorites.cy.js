@@ -24,7 +24,7 @@ describe('Favorites Cases', () => {
     
     })
 
-    it('shoudl open login page', () => {
+    it('should open login page upon clicking fav icon without login', () => {
         
         homePageObj.FavoriteIcon()
         .should('be.visible')
