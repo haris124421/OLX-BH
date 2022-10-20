@@ -45,9 +45,11 @@ describe('Favorites Cases', () => {
 
     it('should mark as favorite', () => {
         
-        homePageObj.loginButton().click()
+        // homePageObj.loginButton().click()
         
-        cy.olxLogin(utility.userEmail, utility.userPassword)
+        // cy.olxLogin(utility.userEmail, utility.userPassword)
+        cy.getSessionKey()
+        
         
         homePageObj.FavoriteIcon()
         .should('be.visible').then(($favIcons) => {

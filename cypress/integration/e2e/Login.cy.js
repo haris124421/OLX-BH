@@ -84,7 +84,7 @@ describe('Login Functionality Tests', () => {
   
     homePageobj.listingClick().click()
     
-    detailPageObj.reportThisAd.click()
+    detailPageObj.reportThisAd().click()
     
     loginObj.loginPopup()
     .should('be.visible')

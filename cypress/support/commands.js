@@ -72,6 +72,7 @@ cy.request({
       idToken= response.body.id_token
       refreshToken = response.body.refresh_token
 cy.apiLogin(accessToken,idToken, refreshToken)
+//cy.reload()
 })
 
 })
