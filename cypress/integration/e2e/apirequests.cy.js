@@ -1,27 +1,10 @@
 /// <reference types="cypress"/>
 describe("Login with API", function(){
-  
-  let utility
-    
-  afterEach('Load updated payload data', function() {
-      
-    cy.fixture("testData.json").then((utilityData) => {
-        
-      utility = utilityData
-      
-      return cy.wrap(utility)
-      
-    })
-    
-  })
-  it("should Get Session Key", function(){
+
+  it("should generate session key and login with kecloack request", function(){
         
         cy.visitDomain('sl','getin1')
         cy.getSessionKey()
+        cy.reload()
         })
-
-it('should login user with token', () => {
-  cy.apiLogin(utility.accessToken, utility.idToken, utility.refreshToken)
-  cy.reload()
-})
 })  

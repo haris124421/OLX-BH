@@ -67,31 +67,23 @@ cy.request({
     },
   })
   .then( (response) =>{
-      //expect(`Response.status = ${response.status}`).to.eq('Response.status = 200')
+      expect(`Response.status = ${response.status}`).to.eq('Response.status = 200')
       accessToken= response.body.access_token
-      idToken= response.body.refresh_token
-      refreshToken = response.body.id_token
-      cy.writeFile('cypress/fixtures/testdata.json', {
-        "accessToken": response.body.access_token,
-        "idToken": response.body.id_token,
-        "refreshToken" : response.body.refresh_token
-    })
-//cy.apiLogin(accessToken,idToken, refreshToken)
+      idToken= response.body.id_token
+      refreshToken = response.body.refresh_token
+cy.apiLogin(accessToken,idToken, refreshToken)
 })
 
 })
 
-Cypress.Commands.add('apiLogin', ($accessToken, $idToken, $refreshToken) =>{
-  // cy.log(accessToken)
-  // cy.log(idToken)
-  // cy.log(refreshToken)
+Cypress.Commands.add('apiLogin', (accessToken, idToken, refreshToken) =>{
   cy.request({
     method: 'POST',
     url: 'https://stage.olx-bh.run/api/keycloak/session',
     body: {
-      "accessToken": $accessToken,
-      "idToken": $idToken,
-      "refreshToken": $refreshToken
+      "accessToken": accessToken,
+      "idToken": idToken,
+      "refreshToken": refreshToken
     }
   })
 })

@@ -80,13 +80,13 @@ describe('Login Functionality Tests', () => {
 
   });
   
-  it('should open login page upon clicking fav icon without login', () => {
+  it('should open login page upon clicking report ad option without login', () => {
   
     homePageobj.listingClick().click()
     
     detailPageObj.reportThisAd.click()
     
-    loginPageObj.loginPopup()
+    loginObj.loginPopup()
     .should('be.visible')
 
   });
