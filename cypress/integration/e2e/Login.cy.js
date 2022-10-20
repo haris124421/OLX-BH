@@ -79,5 +79,18 @@ describe('Login Functionality Tests', () => {
     chatsPageObj.chatInbox().should('be.visible')
 
   });
+  
+  it('should open login page upon clicking report ad option without login', () => {
+  
+    homePageobj.listingClick().click()
+    
+    detailPageObj.reportThisAd().click()
+    
+    loginObj.loginPopup()
+    .should('be.visible')
+
+  });
+
+
 
 })

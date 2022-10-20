@@ -24,7 +24,7 @@ describe('Favorites Cases', () => {
     
     })
 
-    it('shoudl open login page', () => {
+    it('should open login page upon clicking fav icon without login', () => {
         
         homePageObj.FavoriteIcon()
         .should('be.visible')
@@ -45,9 +45,9 @@ describe('Favorites Cases', () => {
 
     it('should mark as favorite', () => {
         
-        homePageObj.loginButton().click()
+
+        cy.loginWithApi()
         
-        cy.olxLogin(utility.userEmail, utility.userPassword)
         
         homePageObj.FavoriteIcon()
         .should('be.visible').then(($favIcons) => {
