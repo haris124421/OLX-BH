@@ -20,8 +20,8 @@ describe("Login with API", function(){
         cy.getSessionKey()
         })
 
-// it('should login user with token', () => {
-//   cy.apiLogin(utility.accessToken, utility.idToken, utility.refreshToken)
-//   cy.reload()
-// })
+it('should login user with token', () => {
+  cy.apiLogin(utility.accessToken, utility.idToken, utility.refreshToken)
+  cy.reload()
+})
 })  
