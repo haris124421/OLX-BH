@@ -24,8 +24,9 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-import LoginObjects from "../support/pageObjects/LoginObjects"
-import HomePage from "../support/pageObjects/HomePageObjects"
+import LoginObjects from "./pageObjects/LoginPage"
+import HomePage from "./pageObjects/HomePage"
+import "cypress-localstorage-commands"
 
 Cypress.Commands.add("visitDomain", (username, password) => {
     cy.visit(Cypress.env('url'), {
@@ -68,9 +69,12 @@ cy.request({
   })
   .then( (response) =>{
       expect(`Response.status = ${response.status}`).to.eq('Response.status = 200')
+      //identity=response.body
       accessToken= response.body.access_token
+      //bearerToken = response.body.access_token
       idToken= response.body.id_token
       refreshToken = response.body.refresh_token
+      //cy.setLocalStorage("accessToken", identity.access_Token);
 cy.apiLogin(accessToken,idToken, refreshToken)
 cy.reload()
 })
@@ -89,3 +93,34 @@ Cypress.Commands.add('apiLogin', (accessToken, idToken, refreshToken) =>{
   })
 })
 
+Cypress.Commands.add('checkWalletBalanceApi',()=>{
+  cy.loginWithApi().its('body')
+  .then(identity => {
+    cy.setLocalStorage("accessToken", identity.access_token);
+  });
+})
+
+Cypress.Commands.add('GenerateSessionKey', () => {
+cy.request({
+    method: 'POST',
+    url: 'https://auth.stage.olx-bh.run/auth/realms/olx-bh/protocol/openid-connect/token', // baseUrl is prepend to URL
+    form: true, // indicates the body should be form urlencoded and sets Content-Type: application/x-www-form-urlencoded headers
+    body: {
+        grant_type: 'password',
+        client_id: 'frontend',
+        scope: 'openid',
+        type: 'email_password',
+        email: 'muhammad.haris@empglabs.com',
+        password: '1234567a',
+    },
+  })
+  .its('body')
+  .then(identity => {
+    cy.setLocalStorage("accessToken", identity.access_token);
+    cy.saveLocalStorage();
+    cy.getLocalStorage("accessToken").should("exist");
+        cy.getLocalStorage("accessToken").then(token => {
+          console.log("Identity token", token);
+        });      
+})
+})

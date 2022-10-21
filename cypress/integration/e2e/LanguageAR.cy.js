@@ -1,9 +1,8 @@
 /// <reference types="cypress"/>
 
-import LoginObjects from "../../support/pageObjects/LoginObjects"
-import HomePage from "../../support/pageObjects/HomePageObjects"
+import HomePage from "../../support/pageObjects/HomePage"
 
-const loginObj = new LoginObjects();
+
 const homePageobj = new HomePage();
 
 describe('Verifing arabic language of olx-lb', ()=> {
