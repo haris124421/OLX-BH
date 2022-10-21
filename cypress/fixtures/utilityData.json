@@ -11,5 +11,14 @@
         "Northern Governorate",
         "Muharraq Governorate",
         "Southern Governorate"
-    ]
+    ],
+    "parentCategory": {
+        "Vehicles": "129",
+        "Properties": "138"
+    },
+    "subCategory" : {
+        "Cars": "23",
+        "Properties for Rent": "122",
+        "Properties for Sale": "94"
+    }
 }
