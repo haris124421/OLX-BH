@@ -1,7 +1,7 @@
 /// <reference types = "Cypress"/>
 
 import { should } from "chai";
-import HomePage from "../../support/pageObjects/HomePageObjects"
+import HomePage from "../../support/pageObjects/HomePage"
 import payments from "../../support/pageObjects/payments"
 
 const homePageObj = new HomePage();
@@ -66,7 +66,7 @@ describe("Buy Business Packages from wallet and other payment methods", () => {
         .should("be.visible")
         .click({force:true}).wait(2000)
 
-        homePageObj.buyBusinessPackages()
+        paymentObj.buyBusinessPackages()
         .contains('Buy business packages')
         .click()
 
