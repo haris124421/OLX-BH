@@ -7,7 +7,7 @@ const homePageObj = new HomePage();
 const paymentObj = new payments();
 
 
-/** Go to Buy Business package window and buy a package
+/** Go to Buy Business package window and buy a package ⏳
 Make sure that you can pay with olx wallet (OLX wallet)
 Make sure your balance appears successfully in your wallet with the correct amount (OLX wallet)
 Verify that user can buy feature package
@@ -27,28 +27,20 @@ describe("Buy Business Packages from wallet and other payment methods", () => {
       })
     })
 
-    // let parentCategoryValues
-    // let subPropCategValues
-    
-    let parentCategoryKeys
-    let subCategKeys
+
+    let subCarCategory
+    let subCategory
     let randomParentCategory
     let randomSubCategory
     before("Parsing the Fixtures to selectcategory ad subcategory", () => {
-      const parentCategory = Object.values(utility.parentCategory)
-      subCategKeys = Object.keys(subPropCategories)
-      // subPropCategValues = Object.values(subPropCategories)
-      cy.log(subCarCategory)
-      cy.log(subPropCategories)
-      cy.wrap(parentCategory)
-      parentCategoryKeys = Object.keys(parentCategory)
-      // parentCategoryValues = Object.values(parentCategory)
-      
-      randomParentCategory = String(parentCategory[Math.floor(Math.random() * parentCategory.length)])
-      randomSubCategory = String(subPropCategValues[Math.floor(Math.random() * subPropCategValues.length)])
 
-      cy.log(randomParentCategory)
-      cy.log(randomSubCategory)
+      const parentCategory = Object.values(utility.parentCategory)
+
+      subCarCategory = utility.subCategory.Cars
+      subCategory = Object.values(utility.subCategory.property)
+
+      randomParentCategory = String(parentCategory[Math.floor(Math.random() * parentCategory.length)])
+      randomSubCategory = String(subCategory[Math.floor(Math.random() * subCategory.length)])
     })
   
   
@@ -66,7 +58,6 @@ describe("Buy Business Packages from wallet and other payment methods", () => {
     // let ParentCategory
     it("Go to Buy Business package window and buy a package", ()=> {
 
-      cy.log(subPropCategValues.includes(randomSubCategory))
         cy.loginWithApi().wait(3000)
 
         homePageObj.profileWindowArrow()
@@ -80,29 +71,34 @@ describe("Buy Business Packages from wallet and other payment methods", () => {
         paymentObj.paymentsPage()
         .should("be.visible")
 
-        cy.get("#parentCategory")
+        paymentObj.submitBtn().should('be.disabled')
+
+        paymentObj.paretnCategory()
+        // cy.get("#parentCategory")
         .select(randomParentCategory)
         .should('have.value', randomParentCategory)
 
-        cy.get('#subcategory').then( ($el) => {
-          if(parentValue == subCarCategory)
+        paymentObj.subCategory()
+        .then( ($el) => {
+          if(randomParentCategory == '129')
           {
-            // cy.log('abc')
             cy.wrap($el)
-            .select(randomSubCategory)
-            .should('have.value', randomSubCategory)
+            .select(subCarCategory)
+            .should('have.value', subCarCategory)
           } 
           else {
             cy.wrap($el)
-            .select(subCarCategory)
-            .should('have.value', subCarCategory).wait(2000)
+            .select(randomSubCategory)
+            .should('have.value', randomSubCategory).wait(2000)
           }
+
+          paymentObj.submitBtn()
+          .should('be.enabled')
+          .click()
         })
 
-
-
-
-
-        // cy.get("button[type='submit']").click()
+        paymentObj.bundlePackages()
+        .should("be.visible")
+        .should("have.text", "Heavy discount on Packages")
     })
 })
