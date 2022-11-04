@@ -42,9 +42,6 @@ class HomePage{
     listingClick(){
         return cy.get('._459428ad').eq(0)
     }
-    buyBusinessPackages() {
-        return cy.get("._1075545d._1b835edd.e6320de8._96d4439a")
-    }
 }
 
 export default HomePage;
