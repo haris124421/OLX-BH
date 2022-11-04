@@ -1,5 +1,6 @@
 /// <reference types = "Cypress"/>
 
+import { should } from "chai";
 import HomePage from "../../support/pageObjects/HomePageObjects"
 import payments from "../../support/pageObjects/payments"
 
@@ -56,6 +57,7 @@ describe("Buy Business Packages from wallet and other payment methods", () => {
     })
 
     // let ParentCategory
+    // let price
     it("Go to Buy Business package window and buy a package", ()=> {
 
         cy.loginWithApi().wait(3000)
@@ -100,5 +102,109 @@ describe("Buy Business Packages from wallet and other payment methods", () => {
         paymentObj.bundlePackages()
         .should("be.visible")
         .should("have.text", "Heavy discount on Packages")
+
+
+
+        paymentObj.packages()
+        .should('be.visible').then(($el) => {
+          let selected = Cypress._.sampleSize($el.toArray(), 1)
+
+          cy.get(selected).should('have.length', 1)
+
+          cy.get(selected).find("[type='checkbox']")
+          .check().should('be.checked')
+
+          cy.get(selected).find("[aria-label='Discount price']")
+          .invoke('text')
+          .as('val')
+
+          cy.get('@val').then(($txt) => {
+            const packagePrice = $txt.split(" ")
+            let priceWithSpace = packagePrice[1]
+            let price = parseFloat(priceWithSpace.trim())
+            cy.log(price)
+  
+            paymentObj.viewCartPrice()
+            .should('be.visible')
+            .invoke('text')
+            .as('viewCart')
+  
+            cy.get('@viewCart').then(($txtCart) => {
+              const viewCartText = $txtCart.split(' ')
+              let viewCartTrimPirce = viewCartText[2]
+              let viewCartPrice = parseFloat(viewCartTrimPirce.trim())
+              cy.log(viewCartPrice)
+              expect(price).to.eq(viewCartPrice)
+
+              paymentObj.viewCartButton()
+              .should('be.visible')
+              .click()
+      
+              paymentObj.CartPage()
+              .should('be.visible')
+              
+              paymentObj.packagePriceOnCartPage()
+              .should('be.visible')
+              .invoke('text').as('cartPackagePrice')
+              cy.get('@cartPackagePrice').then(($packageTxtCart) => {
+                const cartPackageText = $packageTxtCart.split(' ')
+                let cartPackageTrimPrice = cartPackageText[1]
+                let cartPackagePrice = parseFloat(cartPackageTrimPrice.trim())
+                cy.log(cartPackagePrice * 2)
+
+                paymentObj.packageTotalPriceOnCartPage()
+                .should('be.visible')
+                .invoke('text')
+                .as('totalCart')
+
+                cy.get('@totalCart').then(($totalPriceTxt) => {
+                  const totalPackagePrice = $totalPriceTxt.split(' ')
+                  let totalPackagePriceTrim = totalPackagePrice[1]
+                  let cartPackageTotalPrice = parseFloat(totalPackagePriceTrim.trim())
+                  
+
+                  paymentObj.increaseQuantitybtn()
+                  .should('be.visible')
+                  .then(() => {
+                    expect(cartPackagePrice).to.eq(cartPackageTotalPrice)
+                  })
+                  .click().wait(2000)
+                  .then(() => {
+                    paymentObj.packageTotalPriceOnCartPage().invoke('text').should('include', cartPackagePrice*2)
+                  }).then(() => {
+                    paymentObj.decreaseQuantitybtn().should('be.visible').click().then(() => {
+                      paymentObj.packageTotalPriceOnCartPage().invoke('text').should('include', cartPackagePrice)
+                    })
+                  })  
+                })
+              })
+            })
+          })
+        })
+
+        paymentObj.payButton()
+        .should('be.visible')
+        .click()
+
+        paymentObj.walletPayment()
+        .should('be.visible')
+        .click()
+
+        paymentObj.yesPayButton()
+        .should('be.visible')
+        .click()
+
+        paymentObj.sucessScreen()
+        .should('be.visible')
+        .invoke('text')
+        .should('include', "Congratulations")
+
+        paymentObj.myAdsButton()
+        .should('be.visible')
+
+        paymentObj.billingInfoButton()
+        .should('be.visible')
     })
+
+
 })
