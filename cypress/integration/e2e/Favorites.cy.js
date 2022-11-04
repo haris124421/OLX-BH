@@ -36,12 +36,12 @@ describe('Favorites Cases', () => {
             
             'have.length', 1
         )
-        .click();
+        .click().wait(4000)
         
         loginPageObj.loginPopup()
         .should('be.visible')
 
-    });
+    })
 
     it('should mark as favorite', () => {
         
@@ -60,7 +60,7 @@ describe('Favorites Cases', () => {
             'have.length', 1
         
             )
-        .click()
+        .click().wait(3000)
         
         homePageObj.MarkedAsFavorite()
         .invoke('attr', 'alt')
