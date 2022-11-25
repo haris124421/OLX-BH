@@ -1,9 +1,11 @@
 /// <reference types="cypress"/>
 
 import HomePage from "../../support/pageObjects/HomePage"
+import locations from "../../support/pageObjects/locations";
 //import 'cypress-wait-until';
 
 const homePageobj = new HomePage();
+const locationObj = new locations();
 
 describe("Locations on the home page and it's functionalities", () => {
  
@@ -36,7 +38,7 @@ describe("Locations on the home page and it's functionalities", () => {
     */ 
 
       it("Verify if default country is selected as a location", () => {
-        homePageobj.locationInput()
+        locationObj.locationInput()
           .wait(5000)
           .should('have.value', utility.country)
 
@@ -47,10 +49,10 @@ describe("Locations on the home page and it's functionalities", () => {
         const regions = utility.locationRegions
         regionsValue = String(regions[Math.floor(Math.random() * regions.length)]) // picking random region from utility
 
-        homePageobj.locationInput()
+        locationObj.locationInput()
           .clear() // Clear Country "Bahrain" name from location
 
-          homePageobj.locationInput()
+          locationObj.locationInput()
           .type(regionsValue)
           .should('have.value', regionsValue)
           .wait(10000) // typing that regionsValue(RandomLocation) in location search bar
@@ -60,15 +62,15 @@ describe("Locations on the home page and it's functionalities", () => {
         // const regions = utility.locationRegions
         // const regionsValue = String(regions[Math.floor(Math.random() * regions.length)])
 
-        homePageobj.locationInput()
+        locationObj.locationInput()
           .clear() // Clear Country "Bahrain" name from location
 
-        homePageobj.locationInput()
+          locationObj.locationInput()
           .type(regionsValue)
           .should('have.value', regionsValue)
           .wait(5000) // type random region name
           
-        homePageobj.locationValues() // getting values from the dropdown and matching values with types one
+          locationObj.locationValues() // getting values from the dropdown and matching values with types one
           .each(($el) => {
             const location = cy.wrap($el.text())
             if(cy.wrap($el.text()).should('include', regionsValue))
@@ -81,7 +83,7 @@ describe("Locations on the home page and it's functionalities", () => {
           })
 
           
-          homePageobj.LocationOnAdCard()
+          locationObj.LocationOnAdCard()
           .each(($el) => { // confirming ad location on search page.
             cy.wrap($el)
               .contains(regionsValue)
