@@ -117,10 +117,12 @@ cy.request({
   .its('body')
   .then(identity => {
     cy.setLocalStorage("accessToken", identity.access_token);
+    cy.setLocalStorage("idToken", identity.id_token);
+    cy.setLocalStorage("refreshToken", identity.refresh_token)
     cy.saveLocalStorage();
-    cy.getLocalStorage("accessToken").should("exist");
-        cy.getLocalStorage("accessToken").then(token => {
-          console.log("Identity token", token);
-        });      
+    // cy.getLocalStorage("accessToken").should("exist");
+    //     cy.getLocalStorage("accessToken").then(token => {
+    //       console.log("Identity token", token);
+    //     });      
 })
 })
