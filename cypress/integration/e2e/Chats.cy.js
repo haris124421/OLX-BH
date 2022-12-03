@@ -38,8 +38,9 @@ describe('Chats Cases', () => {
           cy.wait(3000)
           cy.get('._5fd7b300.f3d05709').click()
           cy.wait(5000)
-          i = 10
           cy.get('._1075545d.d42c0c59._773e5144').should('be.visible')
+          cy.wait(3000)
+          i = 20
         }
         else{
           cy.go('back')
