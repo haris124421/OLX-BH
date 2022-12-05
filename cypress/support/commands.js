@@ -36,7 +36,14 @@ Cypress.Commands.add("visitDomain", (username, password) => {
         }
       })
 })
-
+Cypress.Commands.add("visitDetailPage", (username, password) => {
+  cy.visit(Cypress.env('detailPage'), {
+      auth: {
+        username: username,
+        password: password
+      }
+    })
+})
 Cypress.Commands.add('olxLogin', ($email, $password) => {
 
   const loginObj = new LoginObjects();
