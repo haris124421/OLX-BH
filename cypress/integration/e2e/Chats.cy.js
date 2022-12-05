@@ -4,6 +4,7 @@ import DetailPage from "../../support/pageObjects/DetailPage";
 
 const homePageObj = new HomePage();
 const detailPajeObj =  new DetailPage();
+var adTiles =5
 describe('Chats Cases', () => {
 
     let utility
@@ -26,27 +27,13 @@ describe('Chats Cases', () => {
         } 
       })
 
-    it('Click on Chat should open Chat', () => {
+    it('should send chats', () => {
+      
+      //cy.wait(3000)
+      cy.visitDetailPage(utility.authUsername, utility.authPassword)
       cy.loginWithApi()
-      const adTiles =10
-      for (let i = 0; i < adTiles; i++) {
-        cy.wait(3000)
-        cy.get('._459428ad').eq(0).click();
-        cy.wait(3000)
-        cy.get("body").then($body => {
-        if($body.find("button[class$='_5fd7b300 f3d05709']").is(':visible')){
-          cy.wait(3000)
-          cy.get('._5fd7b300.f3d05709').click()
-          cy.wait(5000)
-          cy.get('._1075545d.d42c0c59._773e5144').should('be.visible')
-          cy.wait(3000)
-          i = 20
-        }
-        else{
-          cy.go('back')
-        }
-      })
-        
-        }
+      cy.get('._5fd7b300.f3d05709').click()
+      cy.get('._1075545d.d42c0c59._773e5144').should('be.visible')
+      
       });
 });
