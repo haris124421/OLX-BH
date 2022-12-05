@@ -1,10 +1,9 @@
-
-import HomePage from "../../support/pageObjects/HomePage"
+import ChatsPage from "../../support/pageObjects/ChatsPage";
 import DetailPage from "../../support/pageObjects/DetailPage";
 
-const homePageObj = new HomePage();
-const detailPajeObj =  new DetailPage();
-var adTiles =5
+const detailPageObj =  new DetailPage();
+const chatPageObj = new ChatsPage();
+
 describe('Chats Cases', () => {
 
     let utility
@@ -27,13 +26,13 @@ describe('Chats Cases', () => {
         } 
       })
 
-    it('should send chats', () => {
-      
-      //cy.wait(3000)
+    it('Click Chat on Detail Page - should open chat', () => {
       cy.visitDetailPage(utility.authUsername, utility.authPassword)
       cy.loginWithApi()
-      cy.get('._5fd7b300.f3d05709').click()
-      cy.get('._1075545d.d42c0c59._773e5144').should('be.visible')
-      
+      detailPageObj.chatButton().click()
+      chatPageObj.chatBox().should('be.visible')
+      chatPageObj.chatTextArea().type('Hi')
+      chatPageObj.sendChatBtn().click()
+      cy.wait(3000)
       });
 });
