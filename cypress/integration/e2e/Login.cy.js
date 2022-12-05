@@ -76,7 +76,7 @@ describe('Login Functionality Tests', () => {
     
     cy.olxLogin(utility.userEmail, utility.userPassword)
     
-    chatsPageObj.chatInbox().should('be.visible')
+    chatsPageObj.chatBox().should('be.visible')
 
   });
   
