@@ -31,6 +31,7 @@ describe('Chats Cases', () => {
       cy.loginWithApi()
       detailPageObj.chatButton().click()
       chatPageObj.chatBox().should('be.visible')
+      cy.wait(5000)
       chatPageObj.chatTextArea().type('Hi')
       chatPageObj.sendChatBtn().click()
       cy.wait(3000)
