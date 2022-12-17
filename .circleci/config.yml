@@ -11,12 +11,12 @@ workflows:
   daily-run-workflow:
     triggers:
       - schedule:
-          # Every day, at 5:35pm PK time.
-          cron: "35 12 * * *"
+          # Every day, at 7:40pm PK time.
+          cron: "40 14 * * *"
           filters:
             branches:
               only:
-                - master
+                - stage
     jobs:
       - cypress/run:
           name: 'e2e_scheduled_functional-sanity_OLX-BH'
