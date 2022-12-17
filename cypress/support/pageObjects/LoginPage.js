@@ -5,7 +5,7 @@ class LoginObjects {
     }
 
     loginWithEmail() {
-        return cy.get('._5fd7b300.c6ce5164._31a14546._42207ab4:nth-child(3)')
+        return cy.get('.c6ce5164._31a14546._42207ab4:nth-child(3)')
     }
 
     enterEmail() {
