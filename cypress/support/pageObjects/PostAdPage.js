@@ -26,6 +26,9 @@ class PostAdPage{
      postBtn(){
         return cy.get('._5fd7b300.f3d05709')
      }
+     successPage(){
+      return cy.get('._1075545d._14377308')
+     }
 
 }
 export default PostAdPage;
