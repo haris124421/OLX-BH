@@ -29,6 +29,6 @@ describe('Verify Ad Posting', () => {
         cy.loginWithApi()
         homePageObj.sellButton().click()
         cy.fillPostAdForm()
-        postAdPageObj.successPage.should('be.visible')
+        postAdPageObj.successPage().should('be.visible')
     });
 });
