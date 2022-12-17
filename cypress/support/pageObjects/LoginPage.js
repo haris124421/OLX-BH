@@ -1,7 +1,7 @@
 class LoginObjects {
 
     loginPopup() {
-        return cy.get("._34a7409b._3bdb8f07")
+        return cy.get("._470ef52d._9bb11e5f")
     }
 
     loginWithEmail() {

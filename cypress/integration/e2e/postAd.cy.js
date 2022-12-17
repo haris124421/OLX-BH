@@ -1,3 +1,9 @@
+import HomePage from "../../support/pageObjects/HomePage"
+import PostAdPage from "../../support/pageObjects/PostAdPage";
+
+const homePageObj = new HomePage();
+const postAdPageObj = new PostAdPage();
+
 describe('Verify Ad Posting', () => {
     let utility
     before("Loading utility data from fixtures", function() {
@@ -28,16 +34,16 @@ describe('Verify Ad Posting', () => {
         title = randomText + "title"
         description = randomText + "description"
         cy.loginWithApi()
-        cy.get('._0db6bd2f.b7016787').click()
-        cy.contains('Services').click()
-        cy.contains('Other Services').click()
-        cy.get('#title').type(title)
-        cy.get('#description').type(description)
-        cy.get('#price').type('1234')
-        cy.get('#Location').click()
-        cy.contains('Capital Governorate, Bahrain').click()
+        homePageObj.sellButton().click()
+        postAdPageObj.chooseCategory().click()
+        postAdPageObj.chooseSubcategory().click()
+        postAdPageObj.adTitle().type(title)
+        postAdPageObj.adDescription().type(description)
+        postAdPageObj.adPrice().type('5000')
+        postAdPageObj.adLocation().click()
+        postAdPageObj.selectLocationL1().click()
         cy.get('#City').click()
         cy.contains('Adliya').click()
-        cy.get('._5fd7b300.f3d05709').click()
+        postAdPageObj.postBtn().click()
     });
 });
