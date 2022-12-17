@@ -5,19 +5,19 @@ workflows:
   build:
     jobs:
       - cypress/run:
-          name: 'OLX-BH_Functional_Sanity'
+          name: 'e2e_OLX-BH_functional-sanity'
           store_artifacts: true
           
   daily-run-workflow:
     triggers:
       - schedule:
-          # Every day, at 5:35pm PK time.
-          cron: "35 12 * * *"
+          # Every day, at 5:30pm PK time.
+          cron: "30 1 * * *"
           filters:
             branches:
               only:
                 - stage
     jobs:
       - cypress/run:
-          name: 'OLX-BH_Functional_Sanity'
+          name: 'e2e_scheduled_functional-sanity_OLX-BH'
           

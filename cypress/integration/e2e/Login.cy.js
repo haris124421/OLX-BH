@@ -70,7 +70,7 @@ describe('Login Functionality Tests', () => {
 
   it('should redirect user to chat window upon login after chat click', () => {
   
-    homePageobj.listingClick().click()
+    cy.visitDetailPage(utility.authUsername, utility.authPassword)
     
     detailPageObj.chatButton().click()
     
@@ -83,14 +83,11 @@ describe('Login Functionality Tests', () => {
   it('should open login page upon clicking report ad option without login', () => {
   
     homePageobj.listingClick().click()
-    
     detailPageObj.reportThisAd().click()
-    
+    cy.wait(3000)
     loginObj.loginPopup()
     .should('be.visible')
 
   });
-
-
 
 })

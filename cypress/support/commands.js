@@ -26,7 +26,31 @@
 
 import LoginObjects from "./pageObjects/LoginPage"
 import HomePage from "./pageObjects/HomePage"
+import PostAdPage from "./pageObjects/PostAdPage";
 import "cypress-localstorage-commands"
+
+Cypress.Commands.add('fillPostAdForm', () =>{
+  const postAdPageObj = new PostAdPage();
+  let title= ""
+  let description = ""
+  let randomText = ""
+  var pattern = "ABCDFSHQTAADFHYT234434kashfro234233yfakzmxbcvpqurfksfh2346728163844"
+  for(var i = 0; i < 20; i++)
+  randomText += pattern.charAt(Math.floor(Math.random() * pattern.length))
+  title = randomText + "title"
+  description = randomText + "description"
+  postAdPageObj.chooseCategory().click()
+  postAdPageObj.chooseSubcategory().click()
+  postAdPageObj.adTitle().type(title)
+  postAdPageObj.adDescription().type(description)
+  postAdPageObj.adPrice().type('5000')
+  postAdPageObj.adLocation().click()
+  postAdPageObj.selectLocationL1().click()
+  cy.get('#City').click()
+  cy.contains('Adliya').click()
+  postAdPageObj.postBtn().click()
+
+})
 
 Cypress.Commands.add("visitDomain", (username, password) => {
     cy.visit(Cypress.env('url'), {
