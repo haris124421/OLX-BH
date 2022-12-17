@@ -11,8 +11,8 @@ workflows:
   daily-run-workflow:
     triggers:
       - schedule:
-          # Every day, at 7:40pm PK time.
-          cron: "40 14 * * *"
+          # Every day, at 5:30pm PK time.
+          cron: "30 12 * * *"
           filters:
             branches:
               only:

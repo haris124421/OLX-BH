@@ -34,7 +34,7 @@ describe('Login Functionality Tests', () => {
     
   })
 
-  it.only('should login with Email with valid credentials', () => {
+  it('should login with Email with valid credentials', () => {
     
     homePageobj.loginButton().click()
 
