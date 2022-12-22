@@ -36,7 +36,7 @@ class payments {
     }
     
     viewCartButton() {
-        return cy.get("[type='submit']")
+        return cy.get('._495bfc7d > ._5f872d11')
     }
 
     CartPage() {
