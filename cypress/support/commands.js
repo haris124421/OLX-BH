@@ -28,6 +28,8 @@ import LoginObjects from "./pageObjects/LoginPage"
 import HomePage from "./pageObjects/HomePage"
 import "cypress-localstorage-commands"
 
+
+
 Cypress.Commands.add("visitDomain", (username, password) => {
     cy.visit(Cypress.env('url'), {
         auth: {

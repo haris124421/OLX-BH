@@ -45,9 +45,7 @@ describe('Favorites Cases', () => {
 
     it('should mark as favorite', () => {
         
-
         cy.loginWithApi()
-        
         
         homePageObj.FavoriteIcon()
         .should('be.visible').then(($favIcons) => {
@@ -55,12 +53,9 @@ describe('Favorites Cases', () => {
             return Cypress._.sampleSize($favIcons.toArray(), 1)
         
         })
-        .should(
-            
+        .should( 
             'have.length', 1
-        
-            )
-        .click().wait(3000)
+            ).click().wait(3000)
         
         homePageObj.MarkedAsFavorite()
         .invoke('attr', 'alt')
