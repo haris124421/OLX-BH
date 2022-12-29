@@ -26,9 +26,8 @@
 
 import LoginObjects from "./pageObjects/LoginPage"
 import HomePage from "./pageObjects/HomePage"
+import PostAdPage from "./pageObjects/PostAdPage";
 import "cypress-localstorage-commands"
-
-
 
 Cypress.Commands.add("visitDomain", (username, password) => {
     cy.visit(Cypress.env('url'), {
@@ -38,7 +37,14 @@ Cypress.Commands.add("visitDomain", (username, password) => {
         }
       })
 })
-
+Cypress.Commands.add("visitDetailPage", (username, password) => {
+  cy.visit(Cypress.env('detailPage'), {
+      auth: {
+        username: username,
+        password: password
+      }
+    })
+})
 Cypress.Commands.add('olxLogin', ($email, $password) => {
 
   const loginObj = new LoginObjects();

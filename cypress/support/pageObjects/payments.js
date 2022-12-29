@@ -5,7 +5,7 @@ class payments {
     }
 
     paymentsPage() {
-        return cy.get("._7978e49c.e17db4b0._2e82a662.a695f1e9")
+        return cy.get("._1075545d._9a1252cd.d059c029")
     }
 
     paretnCategory() {
@@ -36,7 +36,7 @@ class payments {
     }
     
     viewCartButton() {
-        return cy.get("[type='submit']")
+        return cy.get('._495bfc7d > ._5f872d11')
     }
 
     CartPage() {

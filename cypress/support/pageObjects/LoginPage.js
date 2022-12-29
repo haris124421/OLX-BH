@@ -1,11 +1,11 @@
 class LoginObjects {
 
     loginPopup() {
-        return cy.get("._34a7409b._3bdb8f07")
+        return cy.get("._470ef52d._9bb11e5f")
     }
 
     loginWithEmail() {
-        return cy.get('._5fd7b300.c6ce5164._31a14546._42207ab4:nth-child(3)')
+        return cy.get('.c6ce5164._31a14546._42207ab4:nth-child(3)')
     }
 
     enterEmail() {

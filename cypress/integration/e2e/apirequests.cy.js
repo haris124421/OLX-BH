@@ -14,6 +14,15 @@ describe('API Requests', () => {
     })
 
       it('should PAA', () => {
+        let title= ""
+        let description = ""
+        let randomText = ""
+        var pattern = "ABCDFSHQTAADFHYT234434kashfro234233yfakzmxbcvpqurfksfh2346728163844"
+        for(var i = 0; i < 20; i++)
+        randomText += pattern.charAt(Math.floor(Math.random() * pattern.length))
+        title = randomText + "title"
+        description = randomText + "description"
+
         cy.getLocalStorage("accessToken").should("exist");
         cy.getLocalStorage("accessToken").then(token => {
         cy.request({
@@ -39,8 +48,8 @@ describe('API Requests', () => {
                     "show_phone_number"
                   ]
               },
-              "title": "My ad title",
-              "description":"My ad description for PAA API",
+              "title": title,
+              "description":description,
               "photos":[
                   
               ],

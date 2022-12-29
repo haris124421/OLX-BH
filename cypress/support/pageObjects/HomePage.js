@@ -5,7 +5,7 @@ class HomePage{
     }
 
     loginButton() {
-        return cy.get("._0db6bd2f._1b04dcc1")
+        return cy.get('._1b04dcc1 > ._261203a9')
     }
 
     UserIsLoggedIn(){
@@ -37,7 +37,7 @@ class HomePage{
         return cy.get('._0559c5ad._624c3ae3')
     }
     sellButton(){
-        return cy.get('._0db6bd2f.b7016787')
+        return cy.get('._1075545d > ._34a7409b')
     }
     listingClick(){
         return cy.get('._459428ad').eq(0)
