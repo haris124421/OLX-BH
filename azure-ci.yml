@@ -1,0 +1,31 @@
+# Cron Schedules have been converted using UTC Time Zone and may need to be updated for your location
+trigger:
+  branches:
+    include:
+    - refs/heads/master
+  batch: True
+schedules:
+- cron: 0 6 * * 1,2,4
+  branches:
+    include:
+    - refs/heads/master
+jobs:
+- job: Job_1
+  displayName: Cypress
+  pool:
+    vmImage: windows-latest
+  steps:
+  - checkout: self
+    clean: true
+    fetchTags: false
+  - task: Npm@1
+    displayName: Install Packages
+    inputs:
+      verbose: false
+  - task: Npm@1
+    displayName: Run Sanity Tests
+    inputs:
+      command: custom
+      verbose: false
+      customCommand: run test
+...
