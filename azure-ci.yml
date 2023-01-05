@@ -28,4 +28,10 @@ jobs:
       command: custom
       verbose: false
       customCommand: run test
+  - task: PublishBuildArtifacts@1
+    displayName: "Upload specs video artifacts"
+    inputs:
+      PathtoPublish: cypress/videos
+      ArtifactName: CypressAndAzureDevopsTestRunVideos
+    condition: succeededOrFailed()
 ...
