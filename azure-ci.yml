@@ -11,7 +11,7 @@ schedules:
     - refs/heads/master
 jobs:
 - job: Job_1
-  displayName: OLX BH Functional Sanity
+  displayName: OLX BH e2e Functional Sanity
   pool:
     vmImage: windows-latest
   steps:
@@ -19,11 +19,11 @@ jobs:
     clean: true
     fetchTags: false
   - task: Npm@1
-    displayName: Install Packages
+    displayName: Install Packages and dependencies
     inputs:
       verbose: false
   - task: Npm@1
-    displayName: Run Sanity Tests
+    displayName: Run e2e Sanity Tests
     inputs:
       command: custom
       verbose: false
