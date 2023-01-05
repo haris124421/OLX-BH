@@ -5,13 +5,13 @@ trigger:
     - refs/heads/master
   batch: True
 schedules:
-- cron: 0 6 * * 1,2,4
+- cron: 0 4 * * 1,2,3,4,5
   branches:
     include:
     - refs/heads/master
 jobs:
 - job: Job_1
-  displayName: Cypress
+  displayName: OLX BH Functional Sanity
   pool:
     vmImage: windows-latest
   steps:
