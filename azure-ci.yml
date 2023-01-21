@@ -9,6 +9,7 @@ schedules:
   branches:
     include:
     - refs/heads/master
+  always: true
 jobs:
 - job: Job_1
   displayName: OLX BH e2e Functional Sanity
