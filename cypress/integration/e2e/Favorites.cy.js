@@ -69,7 +69,7 @@ describe('Favorites Cases', () => {
         homePageObj.profileWindowArrow().click()
         homePageObj.myAds().click()
         cy.get('[href="/en/myfavorites"] > span').click()
-        homePageObj.MarkedAsFavorite().click().wait(3000)
+        homePageObj.MarkedAsFavorite().click({ multiple: true }).wait(3000)
         homePageObj.MarkedAsFavorite().should('not.be.visible')
   
     })
