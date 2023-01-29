@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-import LoginObjects from "../../support/pageObjects/LoginPage"
+import LoginObjects from "../../pages/login/login"
 import HomePage from "../../support/pageObjects/HomePage"
 import CategoryPage from "../../support/pageObjects/CategoryPage"
 import DetailPage from "../../support/pageObjects/DetailPage"

@@ -1,0 +1,37 @@
+# Cron Schedules have been converted using UTC Time Zone and may need to be updated for your location
+trigger:
+  branches:
+    include:
+    - refs/heads/master
+  batch: True
+schedules:
+- cron: 0 4 * * 1,2,3,4,5
+  branches:
+    include:
+    - refs/heads/master
+jobs:
+- job: Job_1
+  displayName: OLX BH e2e Functional Sanity
+  pool:
+    vmImage: windows-latest
+  steps:
+  - checkout: self
+    clean: true
+    fetchTags: false
+  - task: Npm@1
+    displayName: Install Packages and dependencies
+    inputs:
+      verbose: false
+  - task: Npm@1
+    displayName: Run e2e Sanity Tests
+    inputs:
+      command: custom
+      verbose: false
+      customCommand: run test
+  - task: PublishBuildArtifacts@1
+    displayName: "Upload specs video artifacts"
+    inputs:
+      PathtoPublish: cypress/videos
+      ArtifactName: CypressAndAzureDevopsTestRunVideos
+    condition: succeededOrFailed()
+...

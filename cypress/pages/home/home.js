@@ -1,11 +1,13 @@
-class HomePage{
+import pageObjectsHome from "../../fixtures/page_objects/home.json"
+
+class home{
 
     olxLogo() {
-        return cy.get('.fb1b3abd.bcd9fd70')
+        return cy.get(pageObjectsHome.olxLogo)
     }
 
     loginButton() {
-        return cy.get('._1b04dcc1 > ._261203a9')
+        return cy.get(pageObjectsHome.login_button)
     }
 
     UserIsLoggedIn(){
@@ -16,7 +18,7 @@ class HomePage{
         return cy.get('._3c2d02e2')
     }
     MarkedAsFavorite(){
-        return cy.get('._1075545d._3c2d02e2._840fd97c')
+        return cy.get('[alt="favoriteIconSelected"]')
     }
 
     profileWindowArrow() {
@@ -42,9 +44,6 @@ class HomePage{
     listingClick(){
         return cy.get('._459428ad').eq(0)
     }
-    myAds(){
-        return cy.get('img[alt="My Ads"]')
-    }
 }
 
-export default HomePage;
+export default home;
