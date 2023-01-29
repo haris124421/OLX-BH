@@ -64,7 +64,7 @@ describe('Favorites Cases', () => {
    
     });
 
-    it.only('should unmark all favorites', ()=>{
+    it('should unmark all favorites', ()=>{
         cy.loginWithApi()
         homePageObj.profileWindowArrow().click()
         homePageObj.myAds().click()
