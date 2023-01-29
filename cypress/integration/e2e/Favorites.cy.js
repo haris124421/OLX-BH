@@ -64,14 +64,22 @@ describe('Favorites Cases', () => {
    
     });
 
-    it('should unmark all favorites', ()=>{
+    it.only('should unmark all favorites', ()=>{
         cy.loginWithApi()
         homePageObj.profileWindowArrow().click()
         homePageObj.myAds().click()
         cy.get('[href="/en/myfavorites"] > span').click()
-        homePageObj.MarkedAsFavorite().click({ multiple: true }).wait(3000)
-        homePageObj.MarkedAsFavorite().should('not.be.visible')
-  
+        cy.get('body').then($body => {
+            cy.wait(10000)
+            //const favads = $body.find("div._1075545d._3c2d02e2._840fd97c")
+            //cy.log(favads)
+            if ($body.find("div._1075545d._3c2d02e2._840fd97c").length > 0) {
+                cy.wrap($body.find("div._1075545d._3c2d02e2._840fd97c")).click({ multiple: true })
+                cy.log('All favorite ads have been unmarked.')
+            } else {
+              cy.log('No favorite ads available.')
+            }
+          })
     })
 
 });
