@@ -4,7 +4,7 @@ module.exports = defineConfig({
   pageLoadTimeout: 55000,
   defaultCommandTimeout:20000,
   env: {
-    url: 'https://stage.olx-eg.run/en',
+    url: 'https://stage.olx-bh.run/en',
     detailPage: 'https://stage.olx-bh.run/en/ad/german-dog-ID1700.html',
     // stopLoop: 'false'
   },
