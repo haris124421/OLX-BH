@@ -69,12 +69,13 @@ describe('Favorites Cases', () => {
         homePageObj.profileWindowArrow().click()
         homePageObj.myAds().click()
         cy.get('[href="/en/myfavorites"] > span').click()
+        cy.wait(6000)
         cy.get('body').then($body => {
-            cy.wait(10000)
-            //const favads = $body.find("div._1075545d._3c2d02e2._840fd97c")
-            //cy.log(favads)
-            if ($body.find("div._1075545d._3c2d02e2._840fd97c").length > 0) {
-                cy.wrap($body.find("div._1075545d._3c2d02e2._840fd97c")).click({ multiple: true })
+            //cy.wait(10000)
+            const favads = $body.find("div._1075545d._3c2d02e2._840fd97c")
+            console.log(favads)
+            if (favads.length > 0) {
+                cy.wrap(favads).click({ multiple: true })
                 cy.log('All favorite ads have been unmarked.')
             } else {
               cy.log('No favorite ads available.')
