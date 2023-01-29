@@ -65,7 +65,7 @@ describe('Chats Cases', () => {
                 cy.wait(2000)
                 flag === true
                 // return false
-                break;
+                // break;
               } else {
                 cy.go('back')
               }
