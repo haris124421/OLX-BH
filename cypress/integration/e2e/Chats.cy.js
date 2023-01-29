@@ -22,14 +22,7 @@ describe('Chats Cases', () => {
     })
 
     beforeEach('it should visit the url', function() {
-        if (Cypress.env('url') == 'https://stage.olx-eg.run/en')
-        {
-          cy.visitDomain(utility.authUsername, utility.authPassword)
-          cy.reload()
-        }
-        else{
-          cy.visit('https://olx.com.eg/en')
-        } 
+      cy.visitDomain(utility.authUsername, utility.authPassword) 
       })
 
     it('Click Chat on Detail Page - should open chat', () => {
