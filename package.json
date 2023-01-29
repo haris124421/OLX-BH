@@ -9,6 +9,9 @@
     "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-if": "^1.10.2",
     "cypress-localstorage-commands": "^2.2.1",
-    "cypress-wait-until": "^1.7.2"
+    "cypress-wait-until": "^1.7.2"   
+  },
+  "scripts": {
+    "test": "cypress run"
   }
 }
