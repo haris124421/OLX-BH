@@ -4,8 +4,9 @@ module.exports = defineConfig({
   pageLoadTimeout: 55000,
   defaultCommandTimeout:20000,
   env: {
-    url: 'https://stage.olx-bh.run/en',
-    detailPage: 'https://stage.olx-bh.run/en/ad/german-dog-ID1700.html'
+    url: 'https://stage.olx-eg.run/en',
+    detailPage: 'https://stage.olx-bh.run/en/ad/german-dog-ID1700.html',
+    // stopLoop: 'false'
   },
   e2e: {
     setupNodeEvents(on, config) {
