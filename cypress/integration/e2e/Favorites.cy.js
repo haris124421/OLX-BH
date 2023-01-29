@@ -59,8 +59,13 @@ describe('Favorites Cases', () => {
         .should('be.visible')
         .then(($favIcons) => {
             return Cypress._.sampleSize($favIcons.toArray(), 1)
-        })
-        .should('have.length', 1).click()
+        }).should('have.length', 1)
+        .then(($fav) => {
+            if($fav.is(':indeterminate'))
+            {
+                cy.wrap($fav).uncheck()
+            }
+        }).click()
         // homePageObj.MarkedAsFavorite()
         cy.get(favorites.MarkedAsFavorite)
         .invoke('attr', 'class')
