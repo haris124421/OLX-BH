@@ -71,8 +71,7 @@ describe('Chats Cases', () => {
               if(Cypress.$(chatLocator).length == 1) {
                 cy.wait(2000)
                 flag === true
-                // return false
-                break;
+                return false
               } else {
                 cy.go('back')
               }

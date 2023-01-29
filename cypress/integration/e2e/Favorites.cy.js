@@ -48,10 +48,9 @@ describe('Favorites Cases', () => {
         cy.loginWithApi()
         
         homePageObj.FavoriteIcon()
-        .should('be.visible').then(($favIcons) => {
-            
+        .should('be.visible')
+        .then(($favIcons) => {
             return Cypress._.sampleSize($favIcons.toArray(), 1)
-        
         })
         .should( 
             'have.length', 1
