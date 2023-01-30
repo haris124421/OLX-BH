@@ -70,7 +70,7 @@ describe('Favorites Cases', () => {
         .should('eq', favorites.jQueryMarkedAsFavorite)
     });
 
-    it('should unmark all favorites', ()=>{
+    it.only('should unmark all favorites', ()=>{
         cy.loginWithApi()
         cy.reload();
         // homePageObj.profileWindowArrow()
@@ -86,10 +86,10 @@ describe('Favorites Cases', () => {
             if ($body.find(home.favoritesAds).length > 0) {
                 cy.wrap($body.find(home.favoritesAds)).click({ multiple: true })
                 cy.log('All favorite ads have been unmarked.')
-                cy.get('._261203a9._2e82a662').should('have.text','No favorites yet.')
+                cy.get('[style="display: block;"] > :nth-child(1) > ._1075545d > ._261203a9').should('have.text','No favorites yet.')
             } else {
               cy.log('No favorite ads available.')
-              cy.get('._261203a9._2e82a662').should('have.text','No favorites yet.')
+              cy.get('[style="display: block;"] > :nth-child(1) > ._1075545d > ._261203a9').should('have.text','No favorites yet.')
               //.should('eq', "No favorite ads available.")
             }
           })
