@@ -70,7 +70,7 @@ describe('Favorites Cases', () => {
         .should('eq', favorites.jQueryMarkedAsFavorite)
     });
 
-    it.only('should unmark all favorites', ()=>{
+    it('should unmark all favorites', ()=>{
         cy.loginWithApi()
         cy.reload();
         // homePageObj.profileWindowArrow()
