@@ -69,7 +69,7 @@ describe('Favorites Cases', () => {
         // homePageObj.MarkedAsFavorite()
         cy.get(favorites.MarkedAsFavorite)
         .invoke('attr', 'class')
-        .should('eq', favorites.MarkedAsFavorite)
+        .should('eq', favorites.jQueryMarkedAsFavorite)
     });
 
     it('should unmark all favorites', ()=>{
@@ -82,9 +82,9 @@ describe('Favorites Cases', () => {
         cy.get(home.favorites).click()
         cy.wait(6000)
         cy.get('body').then($body => {
-            cy.wait(10000)
-            //const favads = $body.find("div._1075545d._3c2d02e2._840fd97c")
-            //cy.log(favads)
+            //cy.wait(10000)
+            const favads = $body.find("div._1075545d._3c2d02e2._840fd97c")
+            cy.log(favads)
             if ($body.find(home.favoritesAds).length > 0) {
                 cy.wrap($body.find(home.favoritesAds)).click({ multiple: true })
                 cy.log('All favorite ads have been unmarked.')
