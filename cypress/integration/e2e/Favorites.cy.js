@@ -43,9 +43,7 @@ describe('Favorites Cases', () => {
         .then(($favIcons) => {  
             return Cypress._.sampleSize($favIcons.toArray(), 1)
         }).should('have.length', 1)
-        .click().wait(10000)
-        
-        // loginPageObj.loginPopup()
+        .click()
         cy.get(login.login_popup)
         .should('be.visible')
 
@@ -88,10 +86,11 @@ describe('Favorites Cases', () => {
             if ($body.find(home.favoritesAds).length > 0) {
                 cy.wrap($body.find(home.favoritesAds)).click({ multiple: true })
                 cy.log('All favorite ads have been unmarked.')
-                .should("eq", "All favorite ads have been unmarked.")
+                cy.get('_261203a9 _2e82a662').should('have.text','No favorites yet.')
             } else {
               cy.log('No favorite ads available.')
-              .should('eq', "No favorite ads available.")
+              cy.get('_261203a9 _2e82a662').should('have.text','No favorites yet.')
+              //.should('eq', "No favorite ads available.")
             }
           })
     })
