@@ -1,4 +1,9 @@
 {
     "olxLogo": ".fb1b3abd.bcd9fd70",
-    "login_button": "._1b04dcc1 > ._261203a9"
+    "login_button": "._1b04dcc1 > ._261203a9",
+    "profileWindowArrow": ".f5e6c6e9 > ._1075545d",
+    "myAds":"img[alt='My Ads']",
+    "favorites": "[href='/en/myfavorites'] > span",
+    "favoritesAds": "div._1075545d._3c2d02e2._840fd97c"
+
 }
