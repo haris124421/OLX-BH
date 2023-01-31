@@ -7,38 +7,44 @@ const loginPageObj = new LoginObjects();
 describe('Favorites Cases', () => {
 
     
-    let utility
-    
+    let utility;
+    let favorites;
+    let login;
+    let home;
     before('Load Utility data', function() {
-      
         cy.fixture("utilityData.json").then((utilityData) => {
             utility = utilityData
             return cy.wrap(utility)
-        
         })
+        cy.fixture("page_objects/Favorites.json").then(($favorites) => {
+            favorites = $favorites
+            return cy.wrap(favorites)
+        })
+        cy.fixture("page_objects/login.json").then(($login) => {
+            login = $login
+            return cy.wrap(login)
+        })
+        cy.fixture("page_objects/home.json").then(($home) => {
+            home = $home
+            return cy.wrap(home)
+        })
+        
     })
 
     beforeEach('Visit Domain', () => {
-        
         cy.visitDomain(utility.authUsername, utility.authPassword)
-    
     })
 
     it('should open login page upon clicking fav icon without login', () => {
         
-        homePageObj.FavoriteIcon()
+        // homePageObj.FavoriteIcon()
+        cy.get(favorites.FavoriteIcon)
         .should('be.visible')
-        .then(($favIcons) => {
-            
+        .then(($favIcons) => {  
             return Cypress._.sampleSize($favIcons.toArray(), 1)
-        
-        }).should(
-            
-            'have.length', 1
-        )
-        .click().wait(4000)
-        
-        loginPageObj.loginPopup()
+        }).should('have.length', 1)
+        .click()
+        cy.get(login.login_popup)
         .should('be.visible')
 
     })
@@ -46,39 +52,45 @@ describe('Favorites Cases', () => {
     it('should mark as favorite', () => {
         
         cy.loginWithApi()
-        
-        homePageObj.FavoriteIcon()
-        .should('be.visible').then(($favIcons) => {
-            
+        // homePageObj.FavoriteIcon()
+        cy.get(favorites.FavoriteIcon)
+        .should('be.visible')
+        .then(($favIcons) => {
             return Cypress._.sampleSize($favIcons.toArray(), 1)
-        
-        })
-        .should( 
-            'have.length', 1
-            ).click()
-        homePageObj.MarkedAsFavorite()
+        }).should('have.length', 1)
+        .then(($fav) => {
+            if($fav.is(':indeterminate'))
+            {
+                cy.wrap($fav).uncheck()
+            }
+        }).click()
+        // homePageObj.MarkedAsFavorite()
+        cy.get(favorites.MarkedAsFavorite)
         .invoke('attr', 'class')
-        .should('eq', '_1075545d _3c2d02e2 _840fd97c')
-        
-        
-   
+        .should('eq', favorites.jQueryMarkedAsFavorite)
     });
 
     it('should unmark all favorites', ()=>{
         cy.loginWithApi()
-        homePageObj.profileWindowArrow().click()
-        homePageObj.myAds().click()
-        cy.get('[href="/en/myfavorites"] > span').click()
+        cy.reload();
+        // homePageObj.profileWindowArrow()
+        cy.get(home.profileWindowArrow).click()
+        // homePageObj.myAds()
+        cy.get(home.myAds).click()
+        cy.get(home.favorites).click()
         cy.wait(6000)
         cy.get('body').then($body => {
             //cy.wait(10000)
             const favads = $body.find("div._1075545d._3c2d02e2._840fd97c")
-            console.log(favads)
-            if (favads.length > 0) {
-                cy.wrap(favads).click({ multiple: true })
+            cy.log(favads)
+            if ($body.find(home.favoritesAds).length > 0) {
+                cy.wrap($body.find(home.favoritesAds)).click({ multiple: true })
                 cy.log('All favorite ads have been unmarked.')
+                cy.get('[style="display: block;"] > :nth-child(1) > ._1075545d > ._261203a9').should('have.text','No favorites yet.')
             } else {
               cy.log('No favorite ads available.')
+              cy.get('[style="display: block;"] > :nth-child(1) > ._1075545d > ._261203a9').should('have.text','No favorites yet.')
+              //.should('eq', "No favorite ads available.")
             }
           })
     })
