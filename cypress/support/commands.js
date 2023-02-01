@@ -134,3 +134,10 @@ cy.request({
     //     });      
 })
 })
+
+function randomString(pattern) {
+  for(var i = 0; i < 20; i++){
+    randomText += pattern.charAt(Math.floor(Math.random() * pattern.length))
+  }
+  return randomText      
+}

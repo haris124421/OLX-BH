@@ -6,13 +6,17 @@ module.exports = defineConfig({
   env: {
     url: 'https://stage.olx-bh.run/en',
     detailPage: 'https://stage.olx-bh.run/en/ad/german-dog-ID1700.html',
+    BaseURL: 'https://stage.olx-bh.run'
     // stopLoop: 'false'
   },
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    specPattern: "./cypress/integration/e2e/*.js"
+    specPattern: [
+      './cypress/integration/e2e/*.js',
+      './cypress/integration/e2e/**/*.js'
+    ]
   },
   "retries": {
     // Configure retry attempts for `cypress run`
