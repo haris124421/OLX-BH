@@ -1,5 +1,3 @@
-import login_data from "../../../fixtures/api_data/login.json"
-
 describe('Login', () => {
     
   before(() => {
