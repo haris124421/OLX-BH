@@ -1,5 +1,5 @@
-import LoginObjects from "../../support/pageObjects/LoginPage"
-import HomePage from "../../support/pageObjects/HomePage"
+import LoginObjects from "../../../support/pageObjects/LoginPage"
+import HomePage from "../../../support/pageObjects/HomePage"
 
 const homePageObj = new HomePage();
 const loginPageObj = new LoginObjects();
