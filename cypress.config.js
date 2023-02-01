@@ -5,7 +5,7 @@ module.exports = defineConfig({
   defaultCommandTimeout:20000,
   env: {
     url: 'https://stage.olx-bh.run/en',
-    detailPage: 'https://stage.olx-bh.run/en/ad/title1234-ID2199.html',
+    detailPage: 'https://stage.olx-bh.run/en/ad/vehicles-carsvehicles-cars-ID2198.html',
     BaseURL: 'https://stage.olx-bh.run'
     // stopLoop: 'false'
   },
