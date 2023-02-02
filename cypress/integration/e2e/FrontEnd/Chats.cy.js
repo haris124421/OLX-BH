@@ -1,5 +1,5 @@
-import ChatsPage from "../../support/pageObjects/ChatsPage";
-import DetailPage from "../../support/pageObjects/DetailPage";
+import ChatsPage from "../../../support/pageObjects/ChatsPage";
+import DetailPage from "../../../support/pageObjects/DetailPage";
 import 'cypress-wait-until';
 
 const detailPageObj =  new DetailPage();

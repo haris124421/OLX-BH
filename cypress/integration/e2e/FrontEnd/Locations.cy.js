@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 
-import HomePage from "../../support/pageObjects/HomePage"
-import locations from "../../support/pageObjects/locations";
+import HomePage from "../../../support/pageObjects/HomePage"
+import locations from "../../../support/pageObjects/locations";
 //import 'cypress-wait-until';
 
 const homePageobj = new HomePage();
