@@ -24,9 +24,9 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-import LoginObjects from "./pageObjects/LoginPage"
-import HomePage from "./pageObjects/HomePage"
-import PostAdPage from "./pageObjects/PostAdPage";
+// import LoginObjects from "./pageObjects/LoginPage"
+// import HomePage from "./pageObjects/HomePage"
+// import PostAdPage from "./pageObjects/PostAdPage";
 import "cypress-localstorage-commands"
 
 Cypress.Commands.add("visitDomain", (username, password) => {

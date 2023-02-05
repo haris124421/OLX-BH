@@ -14,7 +14,7 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     specPattern: [
-      './cypress/integration/e2e/*.js',
+      // './cypress/integration/e2e/*.js',
       './cypress/integration/e2e/**/*.js'
     ]
   },
