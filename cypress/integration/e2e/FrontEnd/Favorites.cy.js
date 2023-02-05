@@ -7,8 +7,10 @@ describe('Favorites Cases', () => {
             cy.fixture('page_objects/Favorites.json').then($favotires => {
                 cy.fixture('page_objects/home.json').then($home => {
                     cy.fixture('page_objects/login.json').then($login => {
-                        fixtures = {$utilityData, $favotires, $home, $login}
-                        return cy.wrap(fixtures)
+                        cy.fixture('test_data/Favorites.json').then($favTD => {
+                            fixtures = {$utilityData, $favotires, $home, $login, $favTD}
+                            return cy.wrap(fixtures)
+                        }) 
                     })
                 })
             })
@@ -57,7 +59,7 @@ describe('Favorites Cases', () => {
         .should('eq', removedFirstSpace)
     });
 
-    it.only('should unmark all favorites', ()=>{
+    it('should unmark all favorites', ()=>{
         cy.loginWithApi()
         cy.reload();
         cy.get(fixtures.$home.profileWindowArrow).click()
@@ -75,11 +77,11 @@ describe('Favorites Cases', () => {
                 
                 cy.log('All favorite ads have been unmarked.')
                 cy.get(fixtures.$favotires.NoFavAds)
-                .should('have.text','No favorites yet.')
+                .should('have.text', fixtures.$favTD.NoFavAdsMessage)
             } else {
               cy.log('No favorite ads available.')
               cy.get(fixtures.$favotires.NoFavAds)
-              .should('have.text','No favorites yet.')
+              .should('have.text',fixtures.$favTD.NoFavAdsMessage)
             }
         })
     })

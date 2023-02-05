@@ -1,6 +1,5 @@
 /// <reference types = "Cypress"/>
 
-import { should } from "chai";
 import HomePage from "../../support/pageObjects/HomePage"
 import payments from "../../support/pageObjects/payments"
 
