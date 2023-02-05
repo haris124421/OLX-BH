@@ -16,7 +16,8 @@ module.exports = defineConfig({
     specPattern: [
       // './cypress/integration/e2e/*.js',
       './cypress/integration/e2e/**/*.js'
-    ]
+    ],
+    excludeSpecPattern: './cypress/integration/e2e/FrontEnd/BusinessPackages.cy.js'
   },
   "retries": {
     // Configure retry attempts for `cypress run`

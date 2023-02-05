@@ -1,8 +1,6 @@
 
 describe('Favorites Cases', () => {
 
-    
-
     let fixtures;
     before('Load Utility data', function() {
         cy.fixture("utilityData.json").then($utilityData => {
@@ -23,7 +21,6 @@ describe('Favorites Cases', () => {
 
     it('should open login page upon clicking fav icon without login', () => {
         
-        // homePageObj.FavoriteIcon()
         cy.get(fixtures.$favotires.FavoriteIcon)
         .should('be.visible')
         .then(($favIcons) => {  
@@ -31,7 +28,6 @@ describe('Favorites Cases', () => {
         }).should('have.length', 1)
         .click().wait(10000)
         
-        // loginPageObj.loginPopup()
         cy.get(fixtures.$login.login_popup)
         .should('be.visible')
 
@@ -40,7 +36,6 @@ describe('Favorites Cases', () => {
     it('should mark as favorite', () => {
         
         cy.loginWithApi()
-        // homePageObj.FavoriteIcon()
         cy.get(fixtures.$favotires.FavoriteIcon)
         .should('be.visible')
         .then(($favIcons) => {
@@ -52,7 +47,7 @@ describe('Favorites Cases', () => {
                 cy.wrap($fav).uncheck()
             }
         }).click()
-        // homePageObj.MarkedAsFavorite()
+
         var markFavLocator = fixtures.$favotires.MarkedAsFavorite;
         var replacedDotsBySpace = markFavLocator.replace(/\./g, ' ');
         var removedFirstSpace = replacedDotsBySpace.slice(1);
@@ -65,23 +60,19 @@ describe('Favorites Cases', () => {
     it.only('should unmark all favorites', ()=>{
         cy.loginWithApi()
         cy.reload();
-        // homePageObj.profileWindowArrow()
         cy.get(fixtures.$home.profileWindowArrow).click()
-        // homePageObj.myAds()
+
         cy.get(fixtures.$home.myAds).click()
         cy.get(fixtures.$home.favorites).click()
         cy.wait(6000)
         cy.get('body').then($body => {
             cy.wait(5000)
-            //const favads = $body.find("div._1075545d._3c2d02e2._840fd97c")
-            //cy.log(favads)
             if ($body.find(fixtures.$home.favoritesAds).length > 0) {
                 cy.wrap($body.find(fixtures.$home.favoritesAds)).each(($el, index) => {
                     cy.get($el)
                     .click().wait(3000)
                 })
                 
-                // .click({ multiple: true })
                 cy.log('All favorite ads have been unmarked.')
                 cy.get(fixtures.$favotires.NoFavAds)
                 .should('have.text','No favorites yet.')
@@ -90,7 +81,6 @@ describe('Favorites Cases', () => {
               cy.get(fixtures.$favotires.NoFavAds)
               .should('have.text','No favorites yet.')
             }
-          })
+        })
     })
-
 });
