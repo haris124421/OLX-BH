@@ -1,0 +1,27 @@
+{
+    "extra_fields":{
+        "price":5000,
+        "price_type":"price"
+    },
+    "area":0,
+    "type":"general",
+    "user_external_id":"0926c075-6afb-4d66-ba17-8a01a6a93e70",
+    "purpose":"for-sale",
+    "state":"pending",
+    "source":"strat",
+    "contact_info":{
+        "name":"Muhammad Haris BH",
+        "mobile":"+923234077603",
+        "roles":[
+          "allow_chat_communication",
+          "show_phone_number"
+        ]
+    },
+    "title": "title1234",
+    "description":"description1234567789012383920",
+    "photos":[
+        
+    ],
+    "location_id":"2-51",
+    "category_id":"249"
+  }

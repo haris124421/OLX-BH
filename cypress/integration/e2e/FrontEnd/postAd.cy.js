@@ -1,5 +1,5 @@
-import HomePage from "../../support/pageObjects/HomePage"
-import PostAdPage from "../../support/pageObjects/PostAdPage";
+import HomePage from "../../../support/pageObjects/HomePage"
+import PostAdPage from "../../../support/pageObjects/PostAdPage";
 
 const homePageObj = new HomePage();
 const postAdPageObj = new PostAdPage();
