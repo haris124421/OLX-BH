@@ -1,4 +1,6 @@
 {
     "FavoriteIcon": "._3c2d02e2",
-    "MarkedAsFavorite": "._1075545d._3c2d02e2._840fd97c"
+    "MarkedAsFavorite": "._1075545d._3c2d02e2._840fd97c",
+    "NoFavAds": "[style='display: block;'] > :nth-child(1) > ._1075545d > ._261203a9"
+
 }
