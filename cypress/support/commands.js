@@ -108,6 +108,22 @@ Cypress.Commands.add('checkWalletBalanceApi',()=>{
   });
 })
 
+Cypress.Commands.add('noCreditsInWallet', (element) => {
+  cy.intercept(
+    {
+        method: "GET",
+        url: "https://stage.olx-bh.run/api/user/0926c075-6afb-4d66-ba17-8a01a6a93e70/wallet"
+    },
+    {
+        statusCode: 304,
+        body: {
+            "balance":"0.0",
+          }
+    }).then((res) => {
+      cy.get(element).should('be.visible').click()
+    })
+})
+
 Cypress.Commands.add('GenerateSessionKey', () => {
 cy.request({
     method: 'POST',
@@ -127,11 +143,7 @@ cy.request({
     cy.setLocalStorage("accessToken", identity.access_token);
     cy.setLocalStorage("idToken", identity.id_token);
     cy.setLocalStorage("refreshToken", identity.refresh_token)
-    cy.saveLocalStorage();
-    // cy.getLocalStorage("accessToken").should("exist");
-    //     cy.getLocalStorage("accessToken").then(token => {
-    //       console.log("Identity token", token);
-    //     });      
+    cy.saveLocalStorage();     
 })
 })
 
