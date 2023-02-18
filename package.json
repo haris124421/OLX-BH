@@ -1,15 +1,19 @@
 {
   "dependencies": {
     "cypress": "^10.9.0",
+    "cypress-plugin-xhr-toggle": "^1.0.0",
     "is-element-visible": "^1.0.1"
   },
   "devDependencies": {
+    "@applitools/eyes-cypress": "^3.29.1",
     "@cypress/webpack-preprocessor": "^5.13.0",
+    "@percy/cli": "^1.19.2",
+    "@percy/cypress": "^3.1.2",
     "@types/jquery": "^3.5.14",
     "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-if": "^1.10.2",
     "cypress-localstorage-commands": "^2.2.1",
-    "cypress-wait-until": "^1.7.2"   
+    "cypress-wait-until": "^1.7.2"
   },
   "scripts": {
     "test": "cypress run"

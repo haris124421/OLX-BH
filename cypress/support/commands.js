@@ -1,3 +1,5 @@
+import 'cypress-plugin-xhr-toggle'
+import '@applitools/eyes-cypress/commands'
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -117,7 +119,7 @@ Cypress.Commands.add('noCreditsInWallet', (element) => {
     {
         statusCode: 304,
         body: {
-            "balance":"0.0",
+            "balance":"10.0",
           }
     }).then((res) => {
       cy.get(element).should('be.visible').click()
