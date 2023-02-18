@@ -6,7 +6,7 @@ module.exports = defineConfig({
   env: {
     url: 'https://stage.olx-bh.run/en',
     detailPage: 'https://stage.olx-bh.run/en/ad/vehicles-carsvehicles-cars-ID2198.html',
-    BaseURL: 'https://stage.olx-bh.run'
+    BaseURL: 'https://stage.olx-bh.run',
     // stopLoop: 'false'
   },
   e2e: {
@@ -28,3 +28,5 @@ module.exports = defineConfig({
     "openMode": 0
   }
 });
+
+require('@applitools/eyes-cypress')(module);

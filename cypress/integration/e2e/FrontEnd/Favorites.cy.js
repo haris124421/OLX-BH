@@ -22,7 +22,6 @@ describe('Favorites Cases', () => {
     })
 
     it('should open login page upon clicking fav icon without login', () => {
-        
         cy.get(fixtures.$favotires.FavoriteIcon)
         .should('be.visible')
         .then(($favIcons) => {  

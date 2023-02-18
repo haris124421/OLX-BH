@@ -198,4 +198,5 @@ describe("Buy Business Packages from wallet and other payment methods", () => {
     .should('be.visible')
     .click()
   })
+
 })
