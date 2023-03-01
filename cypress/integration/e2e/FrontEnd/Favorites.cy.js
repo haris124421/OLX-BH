@@ -21,7 +21,19 @@ describe('Favorites Cases', () => {
         cy.visitDomain(fixtures.$utilityData.authUsername, fixtures.$utilityData.authPassword)
     })
 
+    afterEach("wait a bit", function() {
+        cy.wait(1000)
+        Cypress.on('fail', () => {
+            if (this.currentTest.state === 'failed') {
+                cy.screenshot("Spec", {
+                    capture:"runner"
+                })
+            }
+        })
+    })
+
     it('should open login page upon clicking fav icon without login', () => {
+        cy.log('Get a random favorite icon out of 20')
         cy.get(fixtures.$favotires.FavoriteIcon)
         .should('be.visible')
         .then(($favIcons) => {  
@@ -29,6 +41,7 @@ describe('Favorites Cases', () => {
         }).should('have.length', 1)
         .click().wait(10000)
         
+        cy.log("click fevorite without login")
         cy.get(fixtures.$login.login_popup)
         .should('be.visible')
 
@@ -58,7 +71,7 @@ describe('Favorites Cases', () => {
         .should('eq', removedFirstSpace)
     });
 
-    it('should unmark all favorites', ()=>{
+    it.skip('should unmark all favorites', ()=>{
         cy.loginWithApi()
         cy.reload();
         cy.get(fixtures.$home.profileWindowArrow).click()

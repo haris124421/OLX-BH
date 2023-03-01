@@ -1,8 +1,8 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  pageLoadTimeout: 55000,
-  defaultCommandTimeout:20000,
+  pageLoadTimeout: 20000,
+  defaultCommandTimeout:10000,
   env: {
     url: 'https://stage.olx-bh.run/en',
     detailPage: 'https://stage.olx-bh.run/en/ad/vehicles-carsvehicles-cars-ID2198.html',
