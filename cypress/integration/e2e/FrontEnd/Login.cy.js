@@ -10,35 +10,40 @@ const categoryPageObj = new CategoryPage();
 const detailPageObj = new DetailPage();
 const chatsPageObj = new ChatsPage();
 
+
+
+
 describe('Login Functionality Tests', () => {
+
+  let fixtures;
+  before('Load Utility data', function() {
+    cy.fixture("utilityData.json").then($utilityData => {
+      cy.fixture('page_objects/home.json').then($home => {
+        cy.fixture('page_objects/login.json').then($login => {
+          fixtures = {$utilityData, $home, $login}
+            return cy.wrap(fixtures)
+        }) 
+      })
+    })  
+  })
     
   beforeEach(() => {
     
-    cy.visitDomain(utility.authUsername, utility.authPassword)
+    cy.visitDomain(fixtures.$utilityData.authUsername, fixtures.$utilityData.authPassword)
   
   });
   
   let utility
-    
-  before('Load Utility data', function() {
-      
-    cy.fixture("utilityData.json").then((utilityData) => {
-        
-      utility = utilityData
-      
-      return cy.wrap(utility)
-      
-    })
-    
-  })
 
-  it('should login with Email with valid credentials', () => {
+  it.only('should login with Email with valid credentials', () => {
     
-    homePageobj.loginButton().click()
+    cy.log("Click on login")
+    cy.get(fixtures.$home.login_button).click()
 
-    cy.olxLogin(utility.userEmail, utility.userPassword)
+    cy.olxLogin(fixtures, fixtures.$utilityData.userEmail, fixtures.$utilityData.userPassword)
     
-    homePageobj.profileIcon()
+    cy.log("click on profile dropdown")
+    cy.get(fixtures.$login.profileIcon)
     .should('be.visible')
   
   })

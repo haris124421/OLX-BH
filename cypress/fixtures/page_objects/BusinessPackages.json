@@ -1,0 +1,23 @@
+{
+    "buyBusinessPackages": "[href$='/en/payments/businesspackages/my-account'] > div",
+    "paymentsPage": "._1075545d._9a1252cd.d059c029",
+    "parentCategory": "#parentCategory",
+    "subCategory": "#subcategory",
+    "submitBtn": "button[type='submit']",
+    "bundlePackages": "._7978e49c._2e82a662",
+    "packages": "._1075545d._1cfa8ae9.d059c029", 
+    "packagesCheckpoint": "[type='checkbox']",
+    "viewCartPrice": "._1075545d._6d154e38 > ._34a7409b",
+    "viewCartButton": "._495bfc7d > ._5f872d11",
+    "CartPage": "._259f4064._2e82a662",
+    "packagePriceOnCartPage": "._1075545d.a10938b9._5f872d11 > div > span",
+    "packageTotalPriceOnCartPage": ".f0a1f280 > :nth-child(2) > ._34a7409b",
+    "increaseQuantitybtn": ":nth-child(3) > img",
+    "decreaseQuantitybtn": "._1075545d.a4050ed2:first-child",
+    "payButton": "[type='submit']",
+    "walletPayment": "._1075545d._57ec5ee8._96d4439a",
+    "yesPayButton": "[type='submit']:last-child",
+    "sucessScreen": "._7978e49c",
+    "myAdsButton": "[href='/en/myads'] > ._5fd7b300",
+    "billingInfoButton": "[href='/en/myorders/billing'] > ._5fd7b300"
+}

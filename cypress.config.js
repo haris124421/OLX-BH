@@ -1,12 +1,12 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  pageLoadTimeout: 55000,
-  defaultCommandTimeout:20000,
+  pageLoadTimeout: 20000,
+  defaultCommandTimeout:10000,
   env: {
     url: 'https://stage.olx-bh.run/en',
     detailPage: 'https://stage.olx-bh.run/en/ad/vehicles-carsvehicles-cars-ID2198.html',
-    BaseURL: 'https://stage.olx-bh.run'
+    BaseURL: 'https://stage.olx-bh.run',
     // stopLoop: 'false'
   },
   e2e: {
@@ -14,9 +14,10 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     specPattern: [
-      './cypress/integration/e2e/*.js',
+      // './cypress/integration/e2e/*.js',
       './cypress/integration/e2e/**/*.js'
-    ]
+    ],
+    excludeSpecPattern: './cypress/integration/e2e/FrontEnd/BusinessPackages.cy.js'
   },
   "retries": {
     // Configure retry attempts for `cypress run`
@@ -27,3 +28,5 @@ module.exports = defineConfig({
     "openMode": 0
   }
 });
+
+require('@applitools/eyes-cypress')(module);

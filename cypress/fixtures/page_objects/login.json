@@ -5,6 +5,7 @@
     "next_button": ".a755fcd9 > button",
     "password_field": "#password",
     "login_button": ".a755fcd9 > button > span",
-    "error_invalid_login": ".c45bea97 > ._8918c0a8"
+    "error_invalid_login": ".c45bea97 > ._8918c0a8",
+    "accessDenied": ".df4e426f > .c45bea97._852d2e15 > ._8918c0a8"
     
 }

@@ -1,3 +1,5 @@
+import 'cypress-plugin-xhr-toggle'
+import '@applitools/eyes-cypress/commands'
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -24,10 +26,37 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-import LoginObjects from "./pageObjects/LoginPage"
-import HomePage from "./pageObjects/HomePage"
-import PostAdPage from "./pageObjects/PostAdPage";
+// import LoginObjects from "./pageObjects/LoginPage"
+// import HomePage from "./pageObjects/HomePage"
+// import PostAdPage from "./pageObjects/PostAdPage";
 import "cypress-localstorage-commands"
+
+
+beforeEach( function() {
+  window.logCalls = 1;
+  window.testFlow = [];
+});
+// *****************************************************************************
+Cypress.Commands.overwrite('log', (...args) => {
+
+  const msg = args[1];
+
+  Cypress.log({
+    displayName: `--- ${window.logCalls}. ${msg.toUpperCase()} ---`,
+    message: '\n'
+  });
+
+  window.testFlow.push(`${window.logCalls}. ${msg}`);
+  window.logCalls++;
+
+});
+
+Cypress.on('fail', (err) => {
+  err.message += `${'\n\n' + 'Test flow was:\n\n'}${window.testFlow.join('\n')}`;
+    throw err;
+});
+
+// *****************************************************************************
 
 Cypress.Commands.add("visitDomain", (username, password) => {
     cy.visit(Cypress.env('url'), {
@@ -45,16 +74,19 @@ Cypress.Commands.add("visitDetailPage", (username, password) => {
       }
     })
 })
-Cypress.Commands.add('olxLogin', ($email, $password) => {
 
-  const loginObj = new LoginObjects();
-  const homePageObj = new HomePage();
-  
-  loginObj.loginWithEmail().click()
-  loginObj.enterEmail().type($email)
-  loginObj.nextBtn().click()
-  loginObj.enterPassword().type($password)
-  loginObj.clickLogin().click()
+// *****************************************************************************
+
+Cypress.Commands.add('olxLogin', (fix, $email, $password) => {
+
+  cy.get(fix.$login.email_login).click()
+  cy.get(fix.$login.email_field).type($email)
+  cy.get(fix.$login.next_button).click()
+  cy.log("verify email")
+  cy.get(fix.$login.accessDenied).should("not.be.visible")
+  cy.log("type password") 
+  cy.get(fix.$login.password_field).type($password)
+  cy.get(fix.$login.login_button).click()
 })
 
 Cypress.Commands.add('loginWithApi', () => {
@@ -71,8 +103,8 @@ cy.request({
         client_id: 'frontend',
         scope: 'openid',
         type: 'email_password',
-        email: 'muhammad.haris@empglabs.com',
-        password: '1234567a',
+        email: 'amir.hamza@empglabs.com',
+        password: 'Testing123',
     },
   })
   .then( (response) =>{
@@ -101,12 +133,32 @@ Cypress.Commands.add('apiLogin', (accessToken, idToken, refreshToken) =>{
   })
 })
 
+// *****************************************************************************
+
 Cypress.Commands.add('checkWalletBalanceApi',()=>{
   cy.loginWithApi().its('body')
   .then(identity => {
     cy.setLocalStorage("accessToken", identity.access_token);
   });
 })
+
+Cypress.Commands.add('noCreditsInWallet', (element) => {
+  cy.intercept(
+    {
+        method: "GET",
+        url: "https://stage.olx-bh.run/api/user/0926c075-6afb-4d66-ba17-8a01a6a93e70/wallet"
+    },
+    {
+        statusCode: 304,
+        body: {
+            "balance":"10.0",
+          }
+    }).then((res) => {
+      cy.get(element).should('be.visible').click()
+    })
+})
+
+// *****************************************************************************
 
 Cypress.Commands.add('GenerateSessionKey', () => {
 cy.request({
@@ -127,11 +179,7 @@ cy.request({
     cy.setLocalStorage("accessToken", identity.access_token);
     cy.setLocalStorage("idToken", identity.id_token);
     cy.setLocalStorage("refreshToken", identity.refresh_token)
-    cy.saveLocalStorage();
-    // cy.getLocalStorage("accessToken").should("exist");
-    //     cy.getLocalStorage("accessToken").then(token => {
-    //       console.log("Identity token", token);
-    //     });      
+    cy.saveLocalStorage();     
 })
 })
 
